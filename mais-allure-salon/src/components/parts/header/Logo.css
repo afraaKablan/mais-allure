@@ -1,0 +1,56 @@
+/* logo area style */
+#logoImage {
+  position: relative;
+  background-position: left top;
+  background-image: url("../../../img/3.jpg");
+  opacity: 0.7;
+  height: 470px;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 40px;
+  margin-top: 90px;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
+}
+.container-fluid{
+  margin-left: 0;
+  margin-right: 0;
+}
+img.first{
+  position: absolute;
+  z-index: 1;
+  top: 90px;
+  left: 30%;
+}
+.myPic{
+  position: absolute;
+  z-index: 99999;
+  left: 0;
+  top:-40px;
+}
+img.second{
+  width: 100%;
+  height:auto;
+}
+@media screen and (max-width: 600px) {
+  #logoImage {
+    position: relative;
+    height: 200px;
+    margin-top: 5px;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+  span.logoIcon{
+    width:80px;
+    height: auto;
+    font-size: 25px;
+    margin-right: 25px;
+    font-family: 'Lobster', cursive;
+  }
+  img.first{
+    position: absolute;
+    top: 80px;
+    left: 25%;
+  }
+}

@@ -1,0 +1,84 @@
+
+#inner{
+  height: 650px;
+  vertical-align: top;
+  position: relative;
+  background-position: left top;
+}
+
+#formMsg{
+  position: absolute;
+  height: 100%;
+  top: 10px;
+  right: 10px;
+}
+
+.formMsgContent{
+  width:100%;
+  height: 90%;
+  border-radius: 15px;
+  color: #666666;
+  background-color: rgb(255, 255, 255,0.7);
+  font-family: 'Varela Round', sans-serif;
+  line-height: 1.5;
+}
+
+#details{
+  position: absolute;
+  height: 100%;
+  top: 10px;
+  left: 10px;
+}
+.detailsTitle{
+  font-family: ganFont,sans-serif;
+}
+.detailsContent{
+  width:100%;
+  height: 90%;
+  color: #666666;
+  border-radius: 15px;
+  background-color: rgb(255, 255, 255,0.7);
+  font-family: 'Varela Round', sans-serif;
+  line-height: 1.5;
+  text-align: center;
+}
+.mapContent{
+  border-radius: 15px;
+}
+#formMsg{
+  text-align: right;
+}
+textarea {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+}
+input[type=text],select{
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+button{
+  width: 100%;
+}
+/* google map attach */
+.mapouter{
+  position:relative;
+  text-align:right;
+  height:500px;
+  width:600px;
+}
+.gmap_canvas {
+  overflow:hidden;
+  background:none!important;
+  height:500px;
+  width:600px;
+}
+/* google map attach end */
+.modal-title{
+  font-family: ganFont,sans-serif;
+
+}

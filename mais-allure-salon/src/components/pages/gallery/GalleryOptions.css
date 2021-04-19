@@ -1,0 +1,17 @@
+.headerGallery{
+  margin-top: 50px;
+  width: 110%;
+  height: 500px;
+  margin-left: 0;
+  margin-right: 0;
+}
+.divBackImgOptionsGal{
+  background-image: url("../../../img/wide1.jfif");
+}
+.inner {
+  margin-top: 200px;
+  padding-right: 40%;
+  color: rgb(255,255,255);
+  font-size: 80px;
+  font-family: ganFont,sans-serif;
+}

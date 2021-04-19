@@ -1,0 +1,60 @@
+/* MENU STYLE */
+@font-face {
+    font-family: OzradCLMFont;
+    src: url("./fonts/OzradCLM/OzradCLM/OzradCLM-Bold.woff") format("woff");
+}
+ul,li{
+  padding: 0;
+  margin: 0;
+}
+
+
+.menuli{
+  margin-left: 15px;
+  margin-right: 5px;
+  font-size: 18px;
+  font-family: OzradCLMFont,sans-serif;
+}
+
+span.logoIcon{
+  width:120px;
+  height: auto;
+  font-size: 30px;
+  font-family: 'Lobster', cursive;
+}
+
+#mainMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 70px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  z-index: 99999;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+#mainMenu a:hover{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.dropdown-menu{
+  background-color: rgba(255,255,255,0.7);
+}
+/* unvisited link */
+#mainMenu a:link {
+  color: #4d4d4d ;
+  text-decoration: none;
+}
+/* visited link */
+#mainMenu a:visited {
+  color: #4d4d4d;
+  text-decoration: none;
+}
+/* selected link */
+#mainMenu a:active {
+  color: #4d4d4d;
+  text-decoration: none;
+}
+/* MENU STYLE END */

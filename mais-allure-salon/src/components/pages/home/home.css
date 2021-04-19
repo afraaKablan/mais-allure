@@ -1,0 +1,17 @@
+/* @font-face {
+    font-family: OzradCLMFont;
+    src: url("../fonts/OzradCLM/OzradCLM/OzradCLM-Bold.woff") format("woff");
+
+} */
+html{
+  direction: rtl;
+  font-family: ganFont,sans-serif;
+  line-height: 1.5;
+}
+ul{
+  padding: 0;
+  margin: 0;
+}
+#home{
+  margin-top: 0;
+}

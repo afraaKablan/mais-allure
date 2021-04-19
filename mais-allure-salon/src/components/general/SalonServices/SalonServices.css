@@ -1,0 +1,41 @@
+
+.hidden{
+  position: absolute;
+  top:95%;
+  right:38%;
+  opacity: 0;
+  font-family: ganFont,sans-serif;
+}
+.hidden1{
+  position: absolute;
+  top:85%;
+  right:38%;
+  opacity: 0;
+  font-family: ganFont,sans-serif;
+}
+.frame{
+  /* position: relative; */
+}
+.frame:hover .hidden{
+  opacity: 1;
+}
+.frame:hover .hidden1{
+  opacity: 1;
+}
+.options{
+  width: 220px;
+  height: auto;
+
+}
+
+#epor,#resem{
+  padding-top: 13px;
+
+}
+#resem{
+  padding-right: 5px;
+}
+#gabot{
+  padding-top: 15px;
+  padding-right: 5px;
+}

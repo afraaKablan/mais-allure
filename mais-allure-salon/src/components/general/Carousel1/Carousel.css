@@ -1,0 +1,33 @@
+.carousel{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.carousel-inner{
+  height: 600px;
+}
+
+.carousel-inner img{
+  width: 110%;
+  height: 500px;
+}
+
+.myCaptionTitle{
+  margin-top: 50px;
+  padding-right: 40%;
+  color: rgb(255,255,255);
+  font-size: 70px;
+  font-family: ganFont,sans-serif;
+}
+
+.myCaptionContent{
+
+}
+/* .carItem{
+  position: absolute;
+}
+.caption{
+  position:relative;
+  top:10%;
+  right: 20%;
+} */

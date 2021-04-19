@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\pages",
+    "\\src\\components\\pages\\signIn",
+    "\\src\\components\\pages\\signIn\\content",
+    "\\src\\components\\pages\\signUp",
+    "\\src\\components\\pages\\signUp\\content",
+    "\\src\\img"
+  ],
+  "SelectedNode": "\\src\\components\\pages\\signIn\\content\\FormSignIn.css",
+  "PreviewInSolutionExplorer": false
+}

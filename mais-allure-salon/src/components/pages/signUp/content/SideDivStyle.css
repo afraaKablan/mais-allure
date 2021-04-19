@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'ganFont';
+    src: local('ganFont'),
+         url("./fonts/gan/gan/ganclm_bold-webfont.ttf") format('truetype'),
+         url("./fonts/gan/gan/ganclm_bold-webfont.woff") format("woff");
+}
+
+.form-content-right{
+  background-image: url(../../../../img/signUp.webp);
+  height: 500px;
+  color: white;
+
+}
+.form-signin{
+
+}
+.welcome1{
+  font-family: ganFont,sans-serif;
+}
+.sign-in-btn {
+  width: 70%;
+  height: 50px;
+  margin-top: 10px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100%
+  );
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.sign-in-btn:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+}

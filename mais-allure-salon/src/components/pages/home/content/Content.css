@@ -1,0 +1,118 @@
+
+/* fonts */
+
+@font-face {
+    font-family: 'ganFont';
+    src: local('ganFont'),
+         url("../../../../fonts/gan/gan/ganclm_bold-webfont.ttf") format('truetype'),
+         url("../../../../fonts/gan/gan/ganclm_bold-webfont.woff") format("woff");
+}
+
+#specials{
+  height: 300px;
+}
+
+#info{
+  position: relative;
+  height: 90%;
+}
+.infoTitle{
+  width:auto;
+  height: 50px;
+  border-radius: 15px;
+  z-index: 1;
+  color: #666666;
+
+  position: absolute;
+  background-color: #ffe6e6;
+  top: 0;
+  right: 0;
+  font-family: ganFont,sans-serif;
+}
+.infoContent{
+  width:90%;
+  height: 90%;
+  border-radius: 15px;
+  position: absolute;
+  color: #666666;
+  background-color: #ffe6e6;
+  top: 20px;
+  right: 40px;
+  font-family: 'Varela Round', sans-serif;
+  line-height: 1.5;
+  text-align: right;
+}
+/* BLINK TEXT */
+.blink_me {
+  animation: blinker 3s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+#news{
+  position: relative;
+  height: 90%;
+}
+.newsTitle{
+  width:auto;
+  height: 50px;
+  color: #80002a;
+  border-radius: 15px;
+  z-index: 1;
+  position: absolute;
+  background-color: #ffe6e6;
+  top: 0;
+  right: 0;
+  font-family: ganFont,sans-serif;
+}
+.newsContent{
+  width:90%;
+  height: 90%;
+  color: #666666;
+  border-radius: 15px;
+  position: absolute;
+  background-color: #f2d9e6;
+  top: 20px;
+  right: 40px;
+  font-family: 'Varela Round', sans-serif;
+  line-height: 1.5;
+  text-align: center;
+}
+.newsContent img{
+  width: 80%;
+  height: auto;
+}
+
+.modal-title{
+  font-family: ganFont,sans-serif;
+}
+
+@media screen and (max-width: 600px) {
+  #specials{
+    height:200px;
+    overflow: hidden;
+  }
+  #logoImage {
+    position: relative;
+    height: 200px;
+    margin-top: 5px;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 5px 5px 15px 5px #000000;
+  }
+  span.logoIcon{
+    width:80px;
+    height: auto;
+    font-size: 25px;
+    margin-right: 25px;
+    font-family: 'Lobster', cursive;
+  }
+  img.first{
+    position: absolute;
+    top: 80px;
+    left: 25%;
+  }
+}
