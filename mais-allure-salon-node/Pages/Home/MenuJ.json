@@ -1,0 +1,75 @@
+ [{
+         "title": "",
+         "icon": "fa fa-home fa-fw",
+         "url": "/",
+         "cItem": "nav-item menuli",
+         "cLink": "nav-links",
+         "level": "1"
+     },
+     {
+         "title": "מי אנחנו",
+         "icon": "",
+         "url": "/about",
+         "cItem": "nav-item menuli",
+         "cLink": "nav-links",
+         "level": "1"
+     },
+     {
+         "title": "הפינוקים שלנו",
+         "icon": "",
+         "url": "#",
+         "cItem": "nav-item dropdown menuli",
+         "cLink": "nav-links dropdown-toggle",
+         "level": "2",
+         "drop_items": [" עיסוי רפואי", "נרות הופי", "עיצוב צמות", " אופנה", "פדיקור רפואי", "עיצוב גבות", "ציפורניים", "איפור", "הרמת ריסים"]
+     },
+     {
+         "title": "גלרית תמונות",
+         "icon": "",
+         "url": "/gallery",
+         "cItem": "nav-item menuli",
+         "cLink": "nav-links",
+         "level": "1"
+     },
+     {
+         "title": "צור קשר",
+         "icon": "",
+         "url": "/contactUs",
+         "cItem": "nav-item menuli",
+         "cLink": "nav-links",
+         "level": "1"
+     },
+     {
+         "title": "מוצרים",
+         "icon": "",
+         "url": "/products",
+         "cItem": "nav-item menuli",
+         "cLink": "nav-links",
+         "level": "1"
+
+     },
+     {
+         "title": "הרשמה",
+         "icon": "",
+         "url": "/signUp",
+         "cItem": "nav-item menuli",
+         "cLink": "nav-links",
+         "level": "1"
+     },
+     {
+         "title": "כניסה",
+         "icon": "fas fa-sign-in-alt",
+         "url": "/signIn",
+         "cItem": "nav-item menuli",
+         "cLink": "nav-links",
+         "level": "1"
+     },
+     {
+         "title": "החשבון שלי",
+         "icon": "",
+         "url": "/profile",
+         "cItem": "nav-item menuli",
+         "cLink": "nav-links",
+         "level": "1"
+     }
+ ]

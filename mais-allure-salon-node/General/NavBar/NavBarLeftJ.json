@@ -1,0 +1,25 @@
+[{
+        "title": "הרשמה",
+        "icon": "",
+        "url": "/signUp",
+        "cItem": "nav-item menuli",
+        "cLink": "nav-links",
+        "level": "1"
+    },
+    {
+        "title": "כניסה",
+        "icon": "fas fa-sign-in-alt",
+        "url": "/signIn",
+        "cItem": "nav-item menuli",
+        "cLink": "nav-links",
+        "level": "1"
+    },
+    {
+        "title": "החשבון שלי",
+        "icon": "",
+        "url": "/profile",
+        "cItem": "nav-item menuli",
+        "cLink": "nav-links",
+        "level": "1"
+    }
+]
