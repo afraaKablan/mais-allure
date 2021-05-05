@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
-const ProductDB = require('./ProductDB');
+const GalleryDB = require('./GalleryDB');
 
-router.get('/', ProductDB.proJson);
+router.get('/', GalleryDB.GalJson);
 
 module.exports = router;

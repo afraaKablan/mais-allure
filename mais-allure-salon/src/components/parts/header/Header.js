@@ -6,28 +6,34 @@ import '../navbar/Navbar.css'
 import './Logo.css'
 
 class Header extends React.Component {
-  render() {
-    return (
-    (this.props.logoFlag == 1)?
-      (
-          <div id="HEADER"  className="container-fluid ${this.props.headerClass} ">
-            <Navbar />
-            <Logo
-              logoId = {this.props.logoId}
-              withMyPic = {this.props.withMyPic}
-              withLogo = {this.props.withLogo}
-              logoTitle = {this.props.logoTitle}
-              logoClass = {this.props.logoClass}
-              pgTitle = {this.props.pgTitle}
-              innerDivClass = {this.props.innerDivClass}/>
-          </div>):
-      (
-          <div id="HEADER"  className="container-fluid ${this.props.headerClass} ">
-            <Navbar />
-          </div>
-      )
-    );
-  }
-}
+        constructor(props) {
+            super(props)
+        }
 
-export default Header;
+
+        render() {
+            return (
+                (this.props.logoFlag == 1) ?
+                ( <div id = "HEADER"
+                    className = "container-fluid ${this.props.headerClass} ">
+                    <Navbar data = { this.props.data }/>
+                    <Logo logoId = { this.props.logoId }
+                        withMyPic = { this.props.withMyPic }
+                        withLogo = { this.props.withLogo }
+                        logoTitle = { this.props.logoTitle }
+                        logoClass = { this.props.logoClass }
+                        pgTitle = { this.props.pgTitle }
+                        innerDivClass = { this.props.innerDivClass }
+                    /> 
+                    </div>):
+                    ( 
+                        <div id = "HEADER"
+                                className = "container-fluid ${this.props.headerClass} " >
+                            <Navbar />
+                        </div>
+                    )
+                );
+            }
+        }
+
+        export default Header;

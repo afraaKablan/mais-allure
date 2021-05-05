@@ -6,19 +6,10 @@ import NavbarItem from './NavbarItem'
 class RightNavbarItems extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data: []
-        };
     }
-    componentDidMount() {
-        fetch(`/nav/right`)
-            .then(res => res.json())
-            .then(json => this.setState({ data: json }));
-    }
-
 
     render() {
-        const rightmenuItems = this.state.data.map((singleItem) =>
+        const rightmenuItems = this.props.data.map((singleItem) =>
             <
             NavbarItem item = { singleItem }
             />

@@ -6,19 +6,34 @@ import Content from './content/Content.js'
 import './AboutUs.css'
 
 class AboutUs extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header
-          logoFlag='1'
-          withMyPic='1'
-          withLogo='1'
-          logoId='logoImage'
-          logoClass='container-fluid' />
-        <Content />
-        <Footer />
-      </div>
-    );
+  constructor(props) {
+      super(props);
+      this.state = {
+          data: []
+      };
+    }
+    componentDidMount() {
+        fetch(`/about`)
+            .then(res => res.json())
+            .then(json => this.setState({ data: json }));
+    }
+
+    render() {
+      console.log(this.state.data)
+      if (this.state.data.length == 0)
+          return (<p> Ooops </p>)    
+      return (
+        <div>
+          <Header data = { this.state.data.Nav }
+            logoFlag='1'
+            withMyPic='1'
+            withLogo='1'
+            logoId='logoImage'
+            logoClass='container-fluid' />
+          <Content />
+          <Footer />
+        </div>
+      );
   }
 }
 

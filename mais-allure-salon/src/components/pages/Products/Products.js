@@ -60,9 +60,7 @@ class Products extends React.Component {
             withLogo = '0'
             logoClass = 'headerProducts divProdBackImg row'
             pgTitle = 'קטלוג המוצרים שלנו'
-            innerDivClass = 'prodLogoInner footInner1'
-
-            /
+            innerDivClass = 'prodLogoInner footInner1' /
             >
 
             <
