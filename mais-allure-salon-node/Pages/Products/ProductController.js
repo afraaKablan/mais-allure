@@ -1,7 +1,7 @@
-var express = require('express')
-var router = express.Router()
-const ProductDB = require('./ProductDB');
+const express = require('express')
+const router = express.Router()
+const productDb = require('./ProductDB');
 
-router.get('/', ProductDB.proJson);
+router.get('/', productDb.ProductsJson)
 
-module.exports = router;
+module.exports = router

@@ -3,8 +3,8 @@ const router = express.Router()
 const NavBar = require('../../General/NavBar/NavBarDB');
 
 
-module.exports.HomePage = (req, res) => {
-    res.json({
+module.exports.HomePageJson = (req, res) => {
+    return ({
         "Nav" : NavBar.NavBarJson()
     });
 }

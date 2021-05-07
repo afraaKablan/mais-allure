@@ -1,8 +1,8 @@
 var express = require('express')
 var router = express.Router()
 const products = require('../Pages/Products/ProductController.js')
-var home = require('../Pages/Home/HomeDB.js')
-var about = require('../Pages/AboutUs/AboutUsDB.js')
+var home = require('../Pages/Home/HomeController.js')
+var about = require('../Pages/AboutUs/AboutUsController.js')
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {

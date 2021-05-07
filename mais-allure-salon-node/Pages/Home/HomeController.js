@@ -1,12 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const NavBar = require('../../General/NavBar/NavBarDB');
+const homeDb = require('./HomeDB');
 
-let HomePageJson = () => {
-    return ('{"Nav":' + JSON.stringify(NavBar.Nav()) + '}')
 
-}
 module.exports.HomePage = (req, res) => {
-    res.json(JSON.parse(HomePageJson()))
-    console.log(JSON.parse(HomePageJson()))
+    res.json(homeDb.HomePageJson())
+    console.log(homeDb.HomePageJson())
 }

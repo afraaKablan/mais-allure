@@ -23,7 +23,6 @@ class Products extends React.Component {
         this.handleBeautyChecked = this.handleBeautyChecked.bind(this); // set this, because you need get methods from CheckBox
     }
 
-
     componentDidMount() {
         fetch(`/products`)
             .then(res => res.json())
@@ -44,7 +43,11 @@ class Products extends React.Component {
     }
 
     render() {
-        const products = this.state.data.map((singleItem) =>
+        console.log(this.state.data)
+        if (this.state.data.length == 0)
+            return (<p> Ooops </p>)
+            
+        const products = this.state.data.Content.map((singleItem) =>
             <
             ProdCard item = { singleItem }
             isNail = { this.state.isNailsChecked }
@@ -52,32 +55,30 @@ class Products extends React.Component {
             isBeauty = { this.state.isBeautyChecked }
             />
         );
-        return ( <
-            div >
-            <
-            Header logoFlag = '1'
-            withMyPic = '0'
-            withLogo = '0'
-            logoClass = 'headerProducts divProdBackImg row'
-            pgTitle = 'קטלוג המוצרים שלנו'
-            innerDivClass = 'prodLogoInner footInner1' /
-            >
+        return ( 
+            <div >
+                <Header data = { this.state.data.Nav } 
+                    logoFlag = '1'
+                    withMyPic = '0'
+                    withLogo = '0'
+                    logoClass = 'headerProducts divProdBackImg row'
+                    pgTitle = 'קטלוג המוצרים שלנו'
+                    innerDivClass = 'prodLogoInner footInner1' /
+                >
 
-            <
-            PopupWidget color = "#00a2ff"
-            text = " קבעי תור עכשיו"
-            textColor = "#ffffff"
-            url = "https://calendly.com/afraa-kablan/echg" /
-            >
+                <PopupWidget color = "#00a2ff"
+                    text = " קבעי תור עכשיו"
+                    textColor = "#ffffff"
+                    url = "https://calendly.com/afraa-kablan/echg" /
+                >
 
 
-            <
-            div div class = "row mr-5" > { products } < /div>
+                <div div class = "row mr-5" > 
+                    { products } 
+                </div>
 
-            <
-            Footer / >
-            <
-            /div>
+                <Footer / >
+            </div>
         );
     }
 }

@@ -1,6 +1,13 @@
 const ProductsJson = require('./ProductsJ.json');
+const NavBar = require('../../General/NavBar/NavBarDB');
 
-module.exports.proJson = (req, res) => {
-    res.json(ProductsJson);
-    console.log(ProductsJson);
+let ProductsJ = (req, res) => {
+    return ProductsJson;
 };
+
+module.exports.ProductsJson = (req, res) => {
+    res.json ({
+        "Nav" : NavBar.NavBarJson(),
+        "Content" : ProductsJ()
+    });
+}
