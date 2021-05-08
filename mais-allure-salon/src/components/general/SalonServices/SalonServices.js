@@ -4,9 +4,13 @@ import SalonItems from './SalonItems'
 import './SalonServices.css'
 
 class SalonServices extends React.Component {
+  constructor(props){
+    super(props)
+  }
+  
   render() {
     return (
-      <SalonItems />
+      <SalonItems items={this.props.item} />
     );
   }
 }

@@ -9,12 +9,25 @@ import {ProductList} from '../Products/content/ProductList'
 class UserProfilePage extends React.Component {
   constructor(props) {
        super(props);
+       this.state = {
+        data: []
+    };
+  }
+  componentDidMount() {
+    fetch(`/user/profile`)
+        .then(res => res.json())
+        .then(json => this.setState({ data: json }));
   }
 
   render() {
+    console.log(this.state.data)
+    if (this.state.data.length == 0)
+        return (<p> Ooops </p>)
+        
     return (
       <div >
-        <Header logoFlag = '0' />
+        <Header data = { this.state.data.Nav }
+                logoFlag = '0' />
         <Content user={RegisterUsers[0]} products={ProductList} />
         <Footer />
       </div>

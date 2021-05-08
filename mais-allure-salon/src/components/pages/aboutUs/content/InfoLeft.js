@@ -4,25 +4,16 @@ import InfoCard from '../../../general/InfoCard/InfoCard'
 import InfoExtra from './InfoExtra'
 
 export class InfoLeft extends React.Component {
+    constructor(props) {
+        super(props)
+      }
     render() {
-        return ( <
-            div id = { this.props.infoID }
-            class = { this.props.infoClass } >
-            <
-            InfoExtra divImgClass = { this.props.divImgClass }
-            imgSrc = { this.props.imgSrc }
-            imgClass = { this.props.imgClass }
-            imgAlt = { this.props.imgAlt }
-            /> <
-            InfoCard id = { this.props.id }
-            class = { this.props.class }
-            titleClass = { this.props.titleClass }
-            title = { this.props.title }
-            contentClass = { this.props.contentClass }
-            content = { this.props.content }
-            hclass = { this.props.hclass }
-            /> <
-            /div>
+        return ( 
+            <div id = { this.props.infoID }
+                 class = { this.props.infoClass } >
+                <InfoExtra item = {this.props.extraInfo}/> 
+                <InfoCard item = {this.props.card}/>
+            </div>
         )
     }
 }

@@ -1,0 +1,33 @@
+[{
+    "id": " info",
+    "title": " פטרת ציפורניים",
+    "class": "col-12 col-md-7 ml-3 mt-2",
+    "titleClass": "infoTitle shadow-lg p-2 ",
+    "contentClass": "infoContent shadow-lg p-5",
+    "toggle": "modal",
+    "target": "#infoModal",
+    "more": " למידע נוסף ",
+    "imgSrc": "",
+    "imgClass": "",
+    "alt": "",
+    "imgId": "",
+    "hclass": "",
+    "content": "פטרת ציפורניים (אוניכומיקוזיס) היא נגע זיהומי שנגרם על ידי פטריה. הנגע יכול להופיע על ציפורני הידיים או על ציפורני הרגליים ויכול לערב ציפורן אחת או יותר. הסימפטומים עשויים לכלול שינוי צבע של הציפורן ללבן או לצהוב, עיבוי של הציפורן, עיוות בצורת הציפורן והיפרדות שלה ממיטתה. מדובר בנגע שכיח שבמרבית המקרים אינו מהווה סיכון בריאותי."
+},
+{
+    "id": " news",
+    "title": "  חדש אצלנום",
+    "class": "col-12 col-md-4 mt-2",
+    "titleClass": "newsTitle shadow-lg p-2 ",
+    "hclass": "blink_me ",
+    "contentClass": "newsContent shadow p-5 justify-content-center",
+    "toggle": "",
+    "target": "",
+    "more": "",
+    "imgSrc": "img/sinderella.jpg",
+    "imgClass": "img-fluid img-circle mt-2",
+    "alt": "sinderella",
+    "imgId": "animated-img1",
+    "content": " טיפול סינדרלה מפנק לכפות הידיים"
+}
+]

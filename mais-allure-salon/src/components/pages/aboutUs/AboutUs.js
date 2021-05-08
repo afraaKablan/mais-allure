@@ -20,17 +20,17 @@ class AboutUs extends React.Component {
 
     render() {
       console.log(this.state.data)
-      if (this.state.data.length == 0)
+      if (this.state.data.length === 0)
           return (<p> Ooops </p>)    
       return (
         <div>
           <Header data = { this.state.data.Nav }
-            logoFlag='1'
-            withMyPic='1'
-            withLogo='1'
-            logoId='logoImage'
-            logoClass='container-fluid' />
-          <Content />
+                  logoFlag='1'
+                  withMyPic='1'
+                  withLogo='1'
+                  logoId='logoImage'
+                  logoClass='container-fluid' />
+          <Content data = { this.state.data.Content }/>
           <Footer />
         </div>
       );

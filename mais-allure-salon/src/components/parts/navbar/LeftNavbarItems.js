@@ -16,9 +16,10 @@ class LeftNavbarItems extends React.Component {
             />
         );
 
-        return ( <
-            ul className = "nav navbar-nav navbar-left justify-content-end col-md-3 mr-5 pr-5" > { leftmenuItems } <
-            /ul>
+        return ( 
+            <ul className = "nav navbar-nav navbar-left justify-content-end col-md-4 mr-5 pr-5" > 
+                { leftmenuItems } 
+            </ul>
         );
     }
 }

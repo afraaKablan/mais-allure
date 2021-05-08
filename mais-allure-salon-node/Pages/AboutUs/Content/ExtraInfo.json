@@ -1,0 +1,30 @@
+[
+    {
+        "id": " 1",
+        "extraImgSrc": "/img/nailsPic1.png",
+        "extraImgClass": "img-fluid rounded mt-4",
+        "extraAlt": "nails",
+        "diImgClass": "extra col-6 mt-2 pb-3 pl-3"
+    },
+    {
+        "id": " 2",
+        "extraImgSrc": "/img/nailsPic2.png",
+        "extraImgClass": "img-fluid rounded mt-4",
+        "extraAlt": "nails",
+        "diImgClass": "extra col-5 mt-2 pb-3 pl-3"
+    },
+    {
+        "id": " 3",
+        "extraImgSrc": "/img/nailsPic3.png",
+        "extraImgClass": "img-fluid rounded mt-4",
+        "extraAlt": "nails",
+        "diImgClass": "extra col-6 mt-2 pb-3 pl-3"
+    },
+    {
+        "id": " 4",
+        "extraImgSrc": "/img/nailsPic4.png",
+        "extraImgClass": "img-fluid rounded mt-4",
+        "extraAlt": "nails",
+        "diImgClass": "extra col-5 mt-2 pb-3 pl-3"
+    }
+]

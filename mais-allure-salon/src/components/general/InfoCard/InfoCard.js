@@ -8,16 +8,21 @@ class InfoCard extends React.Component {
   }
   render() {
     return (
-        <div id={this.props.id} class={this.props.class}>
-          <div class={this.props.titleClass}>
-            <h4 class={this.props.hclass}>{this.props.title}</h4>
+        <div id={this.props.item.id} class={this.props.item.class}>
+          <div class={this.props.item.titleClass}>
+            <h4 class={this.props.item.hclass}>{this.props.item.title}</h4>
           </div>
-          <div class={this.props.contentClass}>
+          <div class={this.props.item.contentClass}>
             <span class="justify-content-center">
-              {this.props.content}
+              {this.props.item.content}
             </span>
-            <a data-toggle={this.props.toggle} data-target={this.props.target}><b><u> {this.props.more} </u></b></a>
-            <img src={this.props.imgSrc} class={this.props.imgClass} alt={this.props.alt} id={this.props.imgId}/>
+            <a data-toggle={this.props.item.toggle} 
+               data-target={this.props.item.target}>
+              <b><u> {this.props.item.more} </u></b>
+            </a>
+            <img src={this.props.item.imgSrc} 
+                 class={this.props.item.imgClass} 
+                 alt={this.props.item.imgId}/>
           </div>
         </div>
     )
@@ -25,3 +30,4 @@ class InfoCard extends React.Component {
 }
 
 export default InfoCard;
+

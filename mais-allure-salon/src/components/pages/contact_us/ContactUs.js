@@ -6,10 +6,28 @@ import Content from './content/Content.js'
 import './ContactUs.css'
 
 class ContactUs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+  };
+  }
+  componentDidMount() {
+    fetch(`/contact`)
+        .then(res => res.json())
+        .then(json => this.setState({ data: json }));
+  }
+
   render() {
+    console.log(this.state.data)
+    if (this.state.data.length == 0){
+        return (<p> Error </p>)
+      }
     return (
       <div>
-        <Header />
+        <Header data = {this.state.data.Nav}
+                logoFlag = '0'
+        />
         <Content />
         <Footer />
       </div>

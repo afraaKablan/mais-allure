@@ -1,21 +1,21 @@
+
 const express = require('express')
 const router = express.Router()
 const NavBar = require('../../General/NavBar/NavBarDB');
-const glleryJ = require('./GalleryJ.json');
+// const contactUsJ = require('./ContactFormJ.json');
 
-let GalleryJson = () => {
-    return glleryJ;
+let ContactUsJson = () => {
+    return contactUsJ;
 };
 
 let Content = () => {
     return ({
-        "Images" : GalleryJson()
+        "ContactForm" : ContactUsJson()
     });
 };
 
-module.exports.GalleryPageJson = (req, res) => {
-    res.json ({
+module.exports.ContactUsPageJson = () => {
+    return ({
         "Nav" : NavBar.NavBarJson(),
-        "Content" : Content()
     });
 }

@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
-const GalleryDB = require('./GalleryDB');
+const GalleryDb = require('./GalleryDB');
 
-router.get('/', GalleryDB.GalJson);
+router.get('/', GalleryDb.GalleryPageJson);
 
 module.exports = router;

@@ -12,6 +12,10 @@ class Header extends React.Component {
 
 
         render() {
+            if (!this.props.data.length > 1){
+                return (this.props.data[this.props.data.length - 1])
+            }
+            console.log(this.props.data)
             return (
                 (this.props.logoFlag == 1) ?
                 ( <div id = "HEADER"
@@ -29,7 +33,7 @@ class Header extends React.Component {
                     ( 
                         <div id = "HEADER"
                                 className = "container-fluid ${this.props.headerClass} " >
-                            <Navbar />
+                            <Navbar data = { this.props.data }/>
                         </div>
                     )
                 );

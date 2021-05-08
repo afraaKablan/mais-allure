@@ -12,37 +12,44 @@ import { Animated } from "react-animated-css";
 class MyGallery extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            data: []
+        };
+    }
+    componentDidMount() {
+        fetch(`/gallery`)
+            .then(res => res.json())
+            .then(json => this.setState({ data: json }));
     }
 
-
     render() {
-        return ( <
-            div >
-            <
-            Header logoFlag = '1'
-            withMyPic = '0'
-            withLogo = '0'
-            logoClass = 'headerNailsGallery divBackImg2 row'
-            pgTitle = 'גלריית תומונות ציפורניים'
-            innerDivClass = 'galLogoInner' /
-            >
+        console.log(this.state.data)
+        if (this.state.data.length == 0)
+            return (<p> Ooops </p>)
+            
+        return ( 
+            <div >
+                <Header data = { this.state.data.Nav}
+                        logoFlag = '1'
+                        withMyPic = '0'
+                        withLogo = '0'
+                        logoClass = 'headerNailsGallery divBackImg2 row'
+                        pgTitle = 'גלריית תומונות ציפורניים'
+                        innerDivClass = 'galLogoInner' 
+                />
 
-            <
-            PopupWidget color = "#00a2ff"
-            text = " קבעי תור עכשיו"
-            textColor = "#ffffff"
-            url = "https://calendly.com/afraa-kablan/echg" /
-            >
-            <
-            div className = 'cont' >
-            <
-            Gallery images = { IMAGES }
-            margin = "15px"
-            backdropClosesModal = "true" /
-            >
-            <
-            /div> <
-            /div>
+                <PopupWidget color = "#00a2ff"
+                            text = " קבעי תור עכשיו"
+                            textColor = "#ffffff"
+                            url = "https://calendly.com/afraa-kablan/echg" 
+                />
+                <div className = 'cont' >
+                    <Gallery images = {this.state.data.Content.Images}
+                            margin = "15px"
+                            backdropClosesModal = "true" 
+                    />
+                </div> 
+            </div>
         );
     }
 }

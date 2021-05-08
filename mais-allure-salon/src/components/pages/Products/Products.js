@@ -48,11 +48,10 @@ class Products extends React.Component {
             return (<p> Ooops </p>)
             
         const products = this.state.data.Content.map((singleItem) =>
-            <
-            ProdCard item = { singleItem }
-            isNail = { this.state.isNailsChecked }
-            isFashion = { this.state.isFashionChecked }
-            isBeauty = { this.state.isBeautyChecked }
+            <ProdCard item = { singleItem }
+                      isNail = { this.state.isNailsChecked }
+                      isFashion = { this.state.isFashionChecked }
+                      isBeauty = { this.state.isBeautyChecked }
             />
         );
         return ( 
@@ -77,7 +76,7 @@ class Products extends React.Component {
                     { products } 
                 </div>
 
-                <Footer / >
+                <Footer/>
             </div>
         );
     }

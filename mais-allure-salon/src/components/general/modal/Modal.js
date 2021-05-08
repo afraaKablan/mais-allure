@@ -7,12 +7,12 @@ import ModalBody from './ModalBody'
 class Modal extends React.Component {
   render() {
     return (
-      <div class="modal fade" id={this.props.id}>
+      <div class="modal fade" id={this.props.item.id}>
         <div class="modal-dialog modal-lg ">
           <div class="modal-content justify-content-center">
 
-            <ModalHeader ctitle={this.props.ctitle} title={this.props.title} />
-            <ModalBody linkUrl={this.props.linkUrl} img={this.props.img}  data={this.props.data}
+            <ModalHeader ctitle={this.props.item.ctitle} title={this.props.item.title} />
+            <ModalBody linkUrl={this.props.item.linkUrl} img={this.props.item.img}  data={this.props.item.data}
             />
 
             <div class="modal-footer">
