@@ -9,11 +9,11 @@ class Cart extends React.Component {
         super(props);
         this.state = {
             value: 1,
-            total: 100,
+            totalPrice: 0,
         }
         this.ref = React.createRef();
     }
-
+    
     addFunction = (val) => {
         let result = evaluate(this.state.val * 100);
         this.setState({ value: this.state.value + 1 });
@@ -26,6 +26,7 @@ class Cart extends React.Component {
         this.setState({ value: 0 }):
             console.log(val);
     }
+
     render() {
         var productsForUser = [];
         // alert(this.props.products[0]['productId']);
@@ -42,76 +43,36 @@ class Cart extends React.Component {
         const cartProducts = productsForUser.map((singleProduct) =>
             <
             CardItem value = { this.state.value }
-            product = { singleProduct }
+                     product = { singleProduct }
             />
-        );
 
+        );
+        
         return (
 
-            <
-            div className = "shopping-cart text-center" >
-            <
-            h3 className = 'title1' >
-            שלום רב { this.props.user.name }
-            זהו סל המוצרים שלך <
-            /h3> <
-            div className = "item" >
-            <
-            div className = "buttons" >
-            <
-            span className = "delete-btn" > < /span> < /
-            div >
+            <div className = "shopping-cart text-center" >
+                <h3 className = 'title1' >
+                  שלום רב  {this.props.user.name } זהו סל המוצרים שלך 
+                </h3> 
+                {cartProducts}
 
-            <
-            div className = "image" >
-            <
-            img className = 'imageStyle'
-            src = 'img/30.png'
-            alt = "" / >
-            <
-            /div>
-
-            <
-            div className = "description" >
-            <
-            span > 'לק בצבע אדום חזק יפה במיוחד מתאים לציפורניים שלך' < /span> < /
-            div >
-
-            <
-            div className = "quantity" >
-            <
-            button className = "plus-btn"
-            type = "button"
-            name = "button"
-            onClick = {
-                () => this.addFunction('+')
-            } >
-            +
-            <
-            /button>
-
-            <
-            p > { this.state.value } < /p>
-
-            <
-            button className = "minus-btn"
-            type = "button"
-            name = "button"
-            onClick = {
-                () => this.subFunction('-')
-            } >
-            -
-            <
-            /button> < /
-            div >
-
-            <
-            div className = "total-price" > { this.state.total } < /div> < /
-            div >
-
-
-            <
-            /div>
+                <div className="final-price row">
+                    <div className="final-title col-md-4">
+                          סכ"ה לפני הנחה 
+                    </div>
+                    <div className="final col-md-4">
+                        {this.state.totalPrice}
+                    </div>
+                </div>
+                <div className="final-price row">
+                    <div className="final-title col-md-4">
+                          סכ"ה אחרי הנחה 
+                    </div>
+                    <div className="final col-md-4">
+                        {this.state.totalPrice}
+                    </div>
+                </div>
+            </div>
         );
     }
 }

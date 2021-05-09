@@ -11,7 +11,6 @@ class FooterPic extends React.Component {
       <div>
         <div className="foot divBackImg row">
           <div className='footInner'>
-            
           </div>
         </div>
     </div>

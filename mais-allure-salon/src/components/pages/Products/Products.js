@@ -76,7 +76,8 @@ class Products extends React.Component {
                     { products } 
                 </div>
 
-                <Footer/>
+                <Footer data={this.state.data.Footer.Social}
+                  contactData={this.state.data.Footer.ContactInfo} />            
             </div>
         );
     }

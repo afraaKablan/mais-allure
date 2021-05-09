@@ -27,7 +27,8 @@ class SignUp extends React.Component {
         <Header data = { this.state.data.Nav }
                 logoFlag = '0' />
         <Form />
-        <Footer />
+        <Footer data={this.state.data.Footer.Social}
+                  contactData={this.state.data.Footer.ContactInfo} />
       </div>
     );
   }

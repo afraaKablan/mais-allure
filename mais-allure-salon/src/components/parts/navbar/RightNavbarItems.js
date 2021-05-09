@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RightListItems } from './ListItems' //myJson
+// import { RightListItems } from './ListItems' //myJson
 import NavbarItem from './NavbarItem'
 
 class RightNavbarItems extends React.Component {
@@ -14,8 +14,10 @@ class RightNavbarItems extends React.Component {
             NavbarItem item = { singleItem }
             />
         );
-        return ( <
-            ul className = "navbar-nav col-md-7" > { rightmenuItems } < /ul>
+        return ( 
+            <ul className = "navbar-nav col-md-7" > 
+                { rightmenuItems } 
+            </ul>
         );
     }
 }

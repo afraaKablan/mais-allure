@@ -35,7 +35,7 @@ export const ProductList = [{
         imgSrc: '/img/30.png',
         imgAlt: 'red',
         category: '1',
-        price: '100 שח'
+        price: '100'
     },
     {
         productId: '5',
@@ -44,7 +44,7 @@ export const ProductList = [{
         imgSrc: '/img/8.png',
         imgAlt: 'TRIO',
         category: '1',
-        price: '230 שח'
+        price: '230'
     },
     {
         productId: '1',
@@ -53,7 +53,7 @@ export const ProductList = [{
         imgSrc: '/img/fashion-facts.jpg',
         imgAlt: 'dress',
         category: '2',
-        price: '250 שח'
+        price: '250'
     },
 
     {
@@ -63,7 +63,7 @@ export const ProductList = [{
         imgSrc: '/img/fashion-facts.jpg',
         imgAlt: 'dress',
         category: '2',
-        price: '250 שח'
+        price: '250'
     },
     {
         productId: '7',
@@ -72,7 +72,7 @@ export const ProductList = [{
         imgSrc: '/img/30.png',
         imgAlt: 'red',
         category: '1',
-        price: '100 שח'
+        price: '100'
     },
 
     {
@@ -82,6 +82,6 @@ export const ProductList = [{
         imgSrc: '/img/8.png',
         imgAlt: 'TRIO',
         category: '1',
-        price: '230 שח'
+        price: '230'
     }
 ]

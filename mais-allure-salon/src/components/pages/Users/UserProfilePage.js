@@ -13,6 +13,8 @@ class UserProfilePage extends React.Component {
         data: []
     };
   }
+ 
+
   componentDidMount() {
     fetch(`/user/profile`)
         .then(res => res.json())
@@ -28,8 +30,9 @@ class UserProfilePage extends React.Component {
       <div >
         <Header data = { this.state.data.Nav }
                 logoFlag = '0' />
-        <Content user={RegisterUsers[0]} products={ProductList} />
-        <Footer />
+        <Content user={this.state.data.Content.Users[0]} products={this.state.data.Content.Products} />
+        <Footer data={this.state.data.Footer.Social}
+                  contactData={this.state.data.Footer.ContactInfo} />
       </div>
     );
   }

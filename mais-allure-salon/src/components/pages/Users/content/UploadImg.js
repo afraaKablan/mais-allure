@@ -31,12 +31,14 @@ export function UploadImg(props) {
 
       <div className='containerImg'
            onClick={() => imageUploader.current.click()} >
-        <img
-          src = {props.src}
-          ref = {uploadedImage}
-          className='imgClass img-rounded'/>
+        <img className='imgClass img-rounded'
+             src = {props.src}
+             ref = {uploadedImage}
+          />
       </div>
-      לשינוי תמונת פרופיל לחצי על התמונה
+      <div className="changeImg">
+          לשינוי תמונת פרופיל לחצי על התמונה  
+      </div>
     </div>
   )
 }

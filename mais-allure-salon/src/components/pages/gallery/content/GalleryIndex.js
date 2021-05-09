@@ -11,35 +11,22 @@ class GalleryIndex extends React.Component {
   }
   onBtnClicked(event) {
       this.setState({isBtnClicked: !this.state.isBtnClicked})
-  }
+  } 
   render() {
+    const categories = this.props.data.map((singleItem) =>
+        <SideDivWithBtn
+            isBtnIn = {singleItem.isBtnIn}
+            inClass = {singleItem.inClass}
+            hClass = {singleItem.hClass}
+            title = {singleItem.title}
+            href = {singleItem.href}
+            innerElem = {singleItem.innerElem}
+        />
+    );
     return (
     <div>
       <div className='myGallery row mt-5 mr-5 text-center'>
-        <SideDivWithBtn
-          isBtnIn='0'
-          inClass='image-inner zoom nails col-md-3 mt-5 ml-5 mr-5'
-          hClass='welcome1'
-          title=' Nails!'
-          href='/MyGallery'
-          innerElem='inDiv'
-        />
-        <SideDivWithBtn
-          isBtnIn='0'
-          inClass='image-inner zoom fashion col-md-3 mt-5 ml-5 mr-5'
-          hClass='welcome1'
-          title=' Fashion!'
-          href='#'
-          innerElem='inDiv'
-        />
-        <SideDivWithBtn
-          isBtnIn='0'
-          inClass='image-inner zoom beauty col-md-3 mt-5 ml-5 mr-5'
-          hClass='welcome1'
-          title='  Beauty!'
-          href='#'
-          innerElem='inDiv'
-        />
+        {categories}
       </div>
     </div>
   );

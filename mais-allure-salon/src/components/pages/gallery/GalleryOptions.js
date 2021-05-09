@@ -33,8 +33,9 @@ class GalleryOptions extends React.Component {
                 innerDivClass = 'inner'
          />
 
-        <GalleryIndex />
-        <Footer />
+        <GalleryIndex data={this.state.data.Content.Categories}/>
+        <Footer data={this.state.data.Footer.Social}
+                        contactData={this.state.data.Footer.ContactInfo} />
       </div>
     );
   }

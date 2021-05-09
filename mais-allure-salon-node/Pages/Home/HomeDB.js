@@ -5,6 +5,8 @@ const CardsJ = require('./Content/CardsJ.json')
 const CarouselJ = require('./Content/CarouselJ.json')
 const servicesJ = require('./Content/SalonServices.json')
 const modalJ = require('./Content/Modal.json')
+const socialMediaJson = require('../../Parts/Footer/SocialMedia.json')
+const contactInfoJson = require('../../Parts/Footer/ContactInfo.json')
 
 
 let CardsJson = () => {
@@ -22,6 +24,13 @@ let ServiceslJson = () => {
 let ModalJson = () => {
     return modalJ;
 };
+let SocialMediaJson = () => {
+    return socialMediaJson;
+};
+
+let ContactInfoJson = () => {
+    return contactInfoJson;
+};
 
 let Content = () => {
     return ({
@@ -32,9 +41,17 @@ let Content = () => {
     });
 };
 
+let Footer = () => {
+    return ({
+        "Social" : SocialMediaJson(),
+        "ContactInfo" : ContactInfoJson()
+    });
+};
+
 module.exports.HomePageJson = () => {
     return ({
         "Nav" : NavBar.NavBarJson(),
-        "Content" : Content()
+        "Content" : Content(),
+        "Footer" : Footer()
     });
 }

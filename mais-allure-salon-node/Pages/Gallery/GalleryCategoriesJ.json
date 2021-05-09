@@ -1,0 +1,33 @@
+[
+    {
+        "id": "1",
+        "isBtnIn": "0",
+        "inClass": "image-inner zoom nails col-md-3 mt-5 ml-5 mr-5",
+        "hClass": "welcome1",
+        "title": "Nails!",
+        "href": "/MyGallery",
+        "innerElem": "inDiv"
+
+    },
+    {
+        "id": "2",
+        "isBtnIn": "0",
+        "inClass": "image-inner zoom fashion col-md-3 mt-5 ml-5 mr-5",
+        "hClass": "welcome1",
+        "title": "Fashion!",
+        "href": "#",
+        "innerElem": "inDiv"
+
+    },
+
+    {
+        "id": "3",
+        "isBtnIn": "0",
+        "inClass": "image-inner zoom beauty col-md-3 mt-5 ml-5 mr-5",
+        "hClass": "welcome1",
+        "title": "Beauty!",
+        "href": "#",
+        "innerElem": "inDiv"
+
+    }
+]

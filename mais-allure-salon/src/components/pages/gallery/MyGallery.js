@@ -16,6 +16,7 @@ class MyGallery extends React.Component {
             data: []
         };
     }
+    
     componentDidMount() {
         fetch(`/gallery`)
             .then(res => res.json())
@@ -49,6 +50,7 @@ class MyGallery extends React.Component {
                             backdropClosesModal = "true" 
                     />
                 </div> 
+            
             </div>
         );
     }

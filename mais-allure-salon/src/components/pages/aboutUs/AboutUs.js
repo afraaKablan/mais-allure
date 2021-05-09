@@ -31,7 +31,8 @@ class AboutUs extends React.Component {
                   logoId='logoImage'
                   logoClass='container-fluid' />
           <Content data = { this.state.data.Content }/>
-          <Footer />
+          <Footer data={this.state.data.Footer.Social}
+                  contactData={this.state.data.Footer.ContactInfo} />
         </div>
       );
   }
