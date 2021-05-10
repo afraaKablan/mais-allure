@@ -1,13 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const NavBar = require('../../General/NavBar/NavBarDB');
+const NavBar = require('../../Parts/NavBar/NavBarDB');
+const Footer = require('../../Parts/Footer/FooterDB');
 const CardsJ = require('./Content/CardsJ.json')
 const CarouselJ = require('./Content/CarouselJ.json')
 const servicesJ = require('./Content/SalonServices.json')
 const modalJ = require('./Content/Modal.json')
-const socialMediaJson = require('../../Parts/Footer/SocialMedia.json')
-const contactInfoJson = require('../../Parts/Footer/ContactInfo.json')
-
 
 let CardsJson = () => {
     return CardsJ;
@@ -24,13 +22,6 @@ let ServiceslJson = () => {
 let ModalJson = () => {
     return modalJ;
 };
-let SocialMediaJson = () => {
-    return socialMediaJson;
-};
-
-let ContactInfoJson = () => {
-    return contactInfoJson;
-};
 
 let Content = () => {
     return ({
@@ -41,17 +32,10 @@ let Content = () => {
     });
 };
 
-let Footer = () => {
-    return ({
-        "Social" : SocialMediaJson(),
-        "ContactInfo" : ContactInfoJson()
-    });
-};
-
 module.exports.HomePageJson = () => {
     return ({
         "Nav" : NavBar.NavBarJson(),
         "Content" : Content(),
-        "Footer" : Footer()
+        "Footer" : Footer.FooterJson()
     });
 }

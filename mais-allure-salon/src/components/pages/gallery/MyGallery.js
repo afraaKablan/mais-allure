@@ -2,12 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from '../../parts/header/Header.js'
 import Footer from '../../parts/footer/Footer.js'
-import GalleryIndex from './content/GalleryIndex.js'
 import './MyGallery.css'
 import Gallery from 'react-grid-gallery';
 import { PopupWidget } from "react-calendly";
-import { IMAGES } from './content/GalleryInner'
-import { Animated } from "react-animated-css";
 
 class MyGallery extends React.Component {
     constructor(props) {
@@ -18,10 +15,10 @@ class MyGallery extends React.Component {
     }
     
     componentDidMount() {
-        fetch(`/gallery`)
+        fetch(`/gallery?Category=`+ this.props.galleryType)
             .then(res => res.json())
             .then(json => this.setState({ data: json }));
-    }
+      }
 
     render() {
         console.log(this.state.data)
@@ -45,7 +42,7 @@ class MyGallery extends React.Component {
                             url = "https://calendly.com/afraa-kablan/echg" 
                 />
                 <div className = 'cont' >
-                    <Gallery images = {this.state.data.Content.Images}
+                    <Gallery images = {this.state.data.Images}
                             margin = "15px"
                             backdropClosesModal = "true" 
                     />

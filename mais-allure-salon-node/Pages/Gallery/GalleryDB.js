@@ -1,41 +1,42 @@
 const express = require('express')
 const router = express.Router()
-const NavBar = require('../../General/NavBar/NavBarDB');
-const glleryJ = require('./GalleryJ.json');
+const NavBar = require('../../Parts/NavBar/NavBarDB');
+const Footer = require('../../Parts/Footer/FooterDB');
+const nailsJ = require('./GalleryJ.json');
+const fashionJ = require('./FashionJ.json');
 const categoriesJ = require('./GalleryCategoriesJ.json');
-const socialMediaJson = require('../../Parts/Footer/SocialMedia.json')
-const contactInfoJson = require('../../Parts/Footer/ContactInfo.json')
 
-let GalleryJson = () => {
-    return glleryJ;
+let NailsGalleryJson = () => {
+    return nailsJ;
 };
+
+let FashionGalleryJson = () => {
+    return fashionJ;
+}; 
+
 let CategoriesJson = () => {
     return categoriesJ;
 };
 
-let Content = () => {
-    return ({
-        "Images" : GalleryJson(),
-        "Categories" :CategoriesJson()
-    });
-};
-let SocialMediaJson = () => {
-    return socialMediaJson;
-};
-
-let ContactInfoJson = () => {
-    return contactInfoJson;
-};
-let Footer = () => {
-    return ({
-        "Social" : SocialMediaJson(),
-        "ContactInfo" : ContactInfoJson()
-    });
-};
-module.exports.GalleryPageJson = (req, res) => {
-    res.json ({
-        "Nav" : NavBar.NavBarJson(),
-        "Content" : Content(),
-        "Footer" : Footer()
-    });
+module.exports.GalleryPageJson = (category) => {
+    if (!category){
+        return ({
+            "Nav" : NavBar.NavBarJson(),
+            "Categories" :CategoriesJson(),
+            "Footer" : Footer.FooterJson()
+        });
+    }
+    else if (category == 'nails')
+        return ({
+            "Nav" : NavBar.NavBarJson(),
+            "Images" :NailsGalleryJson(),
+            "Footer" : Footer.FooterJson()
+        })
+    else if(category == 'fashion')
+        return({
+            "Nav" : NavBar.NavBarJson(),
+            "Images" :FashionGalleryJson(),
+            "Footer" : Footer.FooterJson()
+        })
+    
 }

@@ -36,12 +36,16 @@ class CardItem extends React.Component {
 
     updateTotal = (price,val) => {
         if (val == '+'){
-            this.setState({ total: (this.state.value + 1) * price  });
+            this.setState({total: (this.state.value + 1) * price});
         }
         else
-            this.setState({ total: (this.state.value - 1) * price  });
+            this.setState({total: (this.state.value - 1) * price});
 
-        this.setState({ totalPrice: this.state.total + this.state.totalPrice  });
+        this.setState({totalPrice: this.state.total + this.state.totalPrice});
+        // if (this.state.total == 0) {
+        //     this.setState({ total: 0 })
+        //     console.log(val);  
+        // }
     }
 
     getTotalPrice = () => {

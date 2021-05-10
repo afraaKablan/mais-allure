@@ -19,14 +19,13 @@ router.get('/', function(req, res) {
 })
 
 router.get('/home', home.HomePage)
-
+router.get('/gallery', gallery.GalleryPage)
 router.get('/contact', contact.ContactUsPage)
 
 // define the about route
 router.get('/about', about.AboutUsPage)
 
 router.use('/products', products)
-router.use('/gallery', gallery)
 router.use('/user', user)
 
 

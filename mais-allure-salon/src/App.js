@@ -19,7 +19,9 @@ import GalleryOptions from './components/pages/gallery/GalleryOptions'
 import Products from './components/pages/Products/Products'
 import Calender from './components/general/calender/Calender'
 import UserProfilePage from './components/pages/Users/UserProfilePage'
-
+import NailsGallery from './components/pages/gallery/content/NailsGallery'
+import FashionGallery from './components/pages/gallery/content/FashionGallery'
+ 
 class App extends React.Component {
   render() {
     return (
@@ -31,6 +33,8 @@ class App extends React.Component {
               <Route path="/signUp" component={SignUp} exact />
               <Route path="/signIn" component={SignIn} exact />
               <Route path="/MyGallery" component={MyGallery} exact />
+              <Route path="/NailsGallery" component={NailsGallery} exact />
+              <Route path="/FashionGallery" component={FashionGallery} exact />
               <Route path="/gallery" component={GalleryOptions} exact />
               <Route path="/calender" component={Calender} exact />
               <Route path="/products" component={Products} exact />

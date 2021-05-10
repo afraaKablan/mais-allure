@@ -1,7 +1,9 @@
-var express = require('express')
-var router = express.Router()
 const GalleryDb = require('./GalleryDB');
 
-router.get('/', GalleryDb.GalleryPageJson);
 
-module.exports = router;
+module.exports.GalleryPage = (req,res) => {
+    const category = req.query.Category
+    res.json(GalleryDb.GalleryPageJson(category))
+    console.log(GalleryDb.GalleryPageJson(category))
+}
+

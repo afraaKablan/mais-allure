@@ -1,0 +1,33 @@
+[{
+    "src": "img/gallery/fashion/fash4.jpg",
+    "thumbnail": "img/gallery/fashion/fash4.jpg",
+    "thumbnailWidth": "120",
+    "thumbnailHeight": "174",
+    "caption": "צבע מיוחד"
+},
+{
+    "src": "img/gallery/fashion/fash5.jpeg",
+    "thumbnail": "img/gallery/fashion/fash5.jpeg",
+    "thumbnailWidth": "320",
+    "thumbnailHeight":  "212"
+},
+
+{
+    "src": "img/gallery/fashion/fash6.jpg",
+    "thumbnail": "img/gallery/fashion/fash6.jpg",
+    "thumbnailWidth": "320",
+    "thumbnailHeight": "212"
+},
+{
+    "src": "img/gallery/fashion/firstCro.jpg",
+    "thumbnail":"img/gallery/fashion/firstCro.jpg",
+    "thumbnailWidth": "320",
+    "thumbnailHeight": "212"
+},
+{
+    "src": "img/gallery/fashion/gal1.jpg",
+    "thumbnail":"img/gallery/fashion/gal1.jpg",
+    "thumbnailWidth": "120",
+    "thumbnailHeight": "212"
+}
+]

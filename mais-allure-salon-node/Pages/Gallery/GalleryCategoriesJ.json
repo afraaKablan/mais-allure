@@ -5,7 +5,7 @@
         "inClass": "image-inner zoom nails col-md-3 mt-5 ml-5 mr-5",
         "hClass": "welcome1",
         "title": "Nails!",
-        "href": "/MyGallery",
+        "href": "/NailsGallery",
         "innerElem": "inDiv"
 
     },
@@ -15,11 +15,10 @@
         "inClass": "image-inner zoom fashion col-md-3 mt-5 ml-5 mr-5",
         "hClass": "welcome1",
         "title": "Fashion!",
-        "href": "#",
+        "href": "FashionGallery",
         "innerElem": "inDiv"
 
     },
-
     {
         "id": "3",
         "isBtnIn": "0",

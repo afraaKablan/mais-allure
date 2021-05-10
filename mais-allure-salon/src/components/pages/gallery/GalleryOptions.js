@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Header from '../../parts/header/Header.js'
 import Footer from '../../parts/footer/Footer.js'
 import GalleryIndex from './content/GalleryIndex.js'
-import Navbar from '../../parts/navbar/Navbar.js'
 import './GalleryOptions.css'
 
 class GalleryOptions extends React.Component {
@@ -33,7 +32,7 @@ class GalleryOptions extends React.Component {
                 innerDivClass = 'inner'
          />
 
-        <GalleryIndex data={this.state.data.Content.Categories}/>
+        <GalleryIndex data={this.state.data.Categories}/>
         <Footer data={this.state.data.Footer.Social}
                         contactData={this.state.data.Footer.ContactInfo} />
       </div>
