@@ -40,7 +40,7 @@ class Content extends React.Component {
         
        
         <div id='cart'>
-          <Cart user={this.props.user} products={ProductList} />
+          <Cart user={this.props.user} products={this.props.products} />
         </div>
 
 

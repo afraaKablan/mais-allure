@@ -9,24 +9,30 @@ class CardItem extends React.Component {
         this.state = {
             value: 1,
             total: this.props.product.price,
-            totalPrice: 0 
+            totalPrice: this.props.total 
 
         }
         this.ref = React.createRef();
     }
-    componentDidMount(){
-        this.setState({ total: this.props.product.price  });
-    }
+    // componentDidMount(){
+    //     this.setState({ total: this.props.product.price  });
+    //     this.setState({ totalPrice: this.props.total  });
+
+    // }
     addFunction = (val,price,callback) => {
-        if(val == '+')
+        if(val == '+'){
             this.setState({ value: this.state.value + 1 });
+            this.setState({ totalPrice: parseInt(this.state.totalPrice) + parseInt(this.props.product.price) });
+
+        }
         else if (val == '-')
         {
             this.setState({ value: this.state.value - 1 });
             (this.state.value == 0) ?
             this.setState({ value: 0 }):
-                console.log(val);            
-        }
+                console.log(val);   
+                this.setState({ totalPrice: parseInt(this.state.totalPrice) - parseInt(this.props.product.price) });
+            }
         else{
             console.log("ERROR")
         }
@@ -40,25 +46,12 @@ class CardItem extends React.Component {
         }
         else
             this.setState({total: (this.state.value - 1) * price});
-
-        this.setState({totalPrice: this.state.total + this.state.totalPrice});
-        // if (this.state.total == 0) {
-        //     this.setState({ total: 0 })
-        //     console.log(val);  
-        // }
+        this.updateNow()
+    }
+    updateNow(){
+        this.props.updateTotalChild(this.state.totalPrice);
     }
 
-    getTotalPrice = () => {
-        return this.state.totalPrice
-    }
-
-    
-    subFunction = (val) => {
-        this.setState({ value: this.state.value - 1 });
-        (this.state.value == 0) ?
-        this.setState({ value: 0 }):
-            console.log(val);
-    }
     render() {
         return (
 
@@ -104,6 +97,7 @@ class CardItem extends React.Component {
                     <div className = "total-price col-md-6" > { this.props.product.price } </div> 
                     <div className = "total-price total col-md-6" > { this.state.total } </div>                     
                 </div>
+
             </div>
         );
     }

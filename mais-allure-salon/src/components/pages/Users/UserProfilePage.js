@@ -25,7 +25,7 @@ class UserProfilePage extends React.Component {
     console.log(this.state.data)
     if (this.state.data.length == 0)
         return (<p> Ooops </p>)
-        
+         
     return (
       <div >
         <Header data = { this.state.data.Nav }

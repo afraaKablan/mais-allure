@@ -44,7 +44,7 @@
         "price": "230 שח"
     },
     {
-        "productId": "1",
+        "productId": "6",
         "prodName": "שמלת ערב",
         "desc": "שמלת ערב מהממת בצבע אדום בד קטיפה",
         "imgSrc": "/img/fashion-facts.jpg",
@@ -54,7 +54,7 @@
     },
 
     {
-        "productId": "6",
+        "productId": "7",
         "prodName": "שמלת ערב",
         "desc": "שמלת ערב מהממת בצבע אדום בד קטיפה",
         "imgSrc": "/img/fashion-facts.jpg",
@@ -63,7 +63,7 @@
         "price": "250 שח"
     },
     {
-        "productId": "7",
+        "productId": "8",
         "prodName": "לק לציפורניים",
         "desc": "לק בצבע אדום חזק יפה במיוחד מתאים לציפורניים שלך",
         "imgSrc": "/img/30.png",
@@ -73,12 +73,12 @@
     },
 
     {
-        "productId": "8",
+        "productId": "9",
         "prodName": "תריו לק",
         "desc": "שלישיית לק לציפורניים בצבעים וורוד, אדום, וניוד",
         "imgSrc": "/img/8.png",
         "imgAlt": "TRIO",
         "category": "1",
-        "price": "230 שח"
+        "price": "230"
     }
 ]
