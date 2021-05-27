@@ -32,12 +32,10 @@ class FormSignIn extends React.Component {
 
     if (!this.state.username) {
       usernameERROR = "הכניסי שם משתמש";
-
     }
 
     if (!this.state.password){
       passwordERROR = "הכניסי סיסמה";
-
     }
 
     if(usernameERROR || passwordERROR ){

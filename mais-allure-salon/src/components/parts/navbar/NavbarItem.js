@@ -4,20 +4,19 @@ import ReactDOM from 'react-dom';
 class NavbarItem extends React.Component {
   render() {
     let dropdownItems="";
-    if (this.props.item.level == 2){
+    if (this.props.item.isDrop == 1){
       let dropitems = this.props.dropDown_items;
-      
       dropdownItems = dropitems.map((singleItem) =>
                         <li>
-                          <a href={singleItem.href}>
-                            {singleItem.optionTitle}
+                          <a href={singleItem.url}>
+                            {singleItem.title}
                           </a>
                         </li>
                       );
     }
     return(
       //normal right menu item
-     (this.props.item.level == 1)?
+     (this.props.item.isDrop == 0)?
         (
           <li className={this.props.item.cItem}>
             <a className={this.props.item.cLink} href={this.props.item.url}>
@@ -28,7 +27,7 @@ class NavbarItem extends React.Component {
         ):
       (
       //dropdown menu item
-      (this.props.item.level == 2)?
+      (this.props.item.isDrop == 1)?
       (
           <li className={this.props.item.cItem}>
             <a className={this.props.item.cLink} data-toggle="dropdown" href={this.props.item.url}>

@@ -2,20 +2,23 @@ const express = require('express')
 const router = express.Router()
 const NavBar = require('../../Parts/NavBar/NavBarDB');
 const Footer = require('../../Parts/Footer/FooterDB');
-const categoriesJ = require('./GalleryCategoriesJ.json');
+// const categoriesJ = require('./GalleryCategoriesJ.json');
 const DB = require('../../dataBase.js')
 
 let CategoriesJson = () => {
-    return categoriesJ;
+    let DbQuery = "SELECT * FROM `galleryindex_tb` WHERE 1;";
+    let DbRes = DB.DbQuery(DbQuery);
+    console.log("Query : "+ DbRes.toString());
+    return DbRes;
+    // return categoriesJ;
 };
 
 let GetImages = (category) => {
-    let DbQuery = "SELECT it.*, cat.categoryName"+ 
-                  " FROM images_tb AS it"+
-                  " INNER JOIN categories_tb AS cat"+
-                  " ON cat.id = it.category_id"+
-                  " WHERE cat.categoryName like '"+category+"';"
-                  
+    let DbQuery = "SELECT it.*, cat.categoryName" + 
+                  " FROM images_tb AS it" + 
+                  " INNER JOIN categories_tb AS cat" +  
+                  " ON cat.id = it.category_id" + 
+                  " WHERE cat.categoryName like '"+category+"';"  
     let DbRes = DB.DbQuery(DbQuery);
     console.log("Query : "+ DbRes.toString());
     return DbRes;
