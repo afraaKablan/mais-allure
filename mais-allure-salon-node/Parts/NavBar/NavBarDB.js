@@ -6,13 +6,6 @@ let NavBarRightJ = () => {
     let DbQuery = "SELECT * FROM `menuitems_tb` AS mt WHERE mt.direction =1 AND mt.menu_id = 1; ";
     let DbRes = DB.DbQuery(DbQuery);
     console.log("Query : "+ DbRes.toString());
-    // let DbQ = ''
-    // for (i=0; i<DbRes.length;i++){
-    //     if (DbRes[i].level == 2){
-    //         DbQ = "SELECT id,optionTitle,href FROM `selectoptions_tb` WHERE select_id="+DbRes[i].menuItem_id+";";
-    //     }
-
-    // }
     return DbRes;
     // return NavBarLeftJson;
 };

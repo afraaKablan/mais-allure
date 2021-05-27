@@ -2,41 +2,38 @@ const express = require('express')
 const router = express.Router()
 const NavBar = require('../../Parts/NavBar/NavBarDB');
 const Footer = require('../../Parts/Footer/FooterDB');
-const nailsJ = require('./GalleryJ.json');
-const fashionJ = require('./FashionJ.json');
 const categoriesJ = require('./GalleryCategoriesJ.json');
-
-let NailsGalleryJson = () => {
-    return nailsJ;
-};
-
-let FashionGalleryJson = () => {
-    return fashionJ;
-}; 
+const DB = require('../../dataBase.js')
 
 let CategoriesJson = () => {
     return categoriesJ;
 };
+
+let GetImages = (category) => {
+    let DbQuery = "SELECT it.*, cat.categoryName"+ 
+                  " FROM images_tb AS it"+
+                  " INNER JOIN categories_tb AS cat"+
+                  " ON cat.id = it.category_id"+
+                  " WHERE cat.categoryName like '"+category+"';"
+                  
+    let DbRes = DB.DbQuery(DbQuery);
+    console.log("Query : "+ DbRes.toString());
+    return DbRes;
+}
+
 //GalleryPageJson function getting the parameter category sending from controller 
-module.exports.GalleryPageJson = (category) => {
+module.exports.GalleryPageJson = async (category) => {
     if (!category){
         return ({
-            "Nav" : NavBar.NavBarJson(),
-            "Categories" :CategoriesJson(),
-            "Footer" : Footer.FooterJson()
+            "Nav" : await NavBar.NavBarJson(),
+            "Categories" : await CategoriesJson(),
+            "Footer" : await Footer.FooterJson()
         });
     }
-    else if (category == 'nails')
+    else 
         return ({
-            "Nav" : NavBar.NavBarJson(),
-            "Images" :NailsGalleryJson(),
-            "Footer" : Footer.FooterJson()
+            "Nav" : await NavBar.NavBarJson(),
+            "Images" : await GetImages(category),
+            "Footer" : await Footer.FooterJson()
         })
-    else if(category == 'fashion')
-        return({
-            "Nav" : NavBar.NavBarJson(),
-            "Images" :FashionGalleryJson(),
-            "Footer" : Footer.FooterJson()
-        })
-    
 }
