@@ -14,7 +14,10 @@ class Content extends React.Component {
               <form action="contactUs.html" class="needs-validation" novalidate>
                 <div class="form-group">
                   <label for="issue">בחרי נושא פניה:</label>
-                  <select id="issue" name="issue" class="form-control">
+                  <select 
+                    id="issue" 
+                    name="issue" 
+                    class="form-control">
                     <option value="nails">ציפורניים</option>
                     <option value="epor">איפור</option>
                     <option value="resem">הרמת ריסים</option>
@@ -30,30 +33,58 @@ class Content extends React.Component {
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control" id="uname" placeholder="שם מלא" name="uname" required/>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="uname" 
+                    placeholder="שם מלא" 
+                    name="uname" 
+                    required/>
                   <div class="valid-feedback">תקף.</div>
                   <div class="invalid-feedback">זהו שדה חובה.</div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="phnum" placeholder="מספר טלפון" name="phnum" required/>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="phnum" 
+                    placeholder="מספר טלפון" 
+                    name="phnum" 
+                    required/>
                   <div class="valid-feedback">תקף.</div>
                   <div class="invalid-feedback">זהו שדה חובה.</div>
                 </div>
 
                 <div class="form-group">
-                  <input type="text" class="form-control" id="mail" placeholder=" כתובת דואר אלקטרוני" name="mail" required/>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="mail" 
+                    placeholder=" כתובת דואר אלקטרוני" 
+                    name="mail" 
+                    required/>
                   <div class="valid-feedback">תקף.</div>
                   <div class="invalid-feedback">זהו שדה חובה.</div>
                 </div>
 
                 <div class="form-group form-check">
-                  <textarea class="form-control" placeholder="תוכן ההודעה" ></textarea>
+                  <textarea 
+                    class="form-control" 
+                    placeholder="תוכן ההודעה" >
+                  
+                  </textarea>
                   <div class="valid-feedback"></div>
-                  <div class="invalid-feedback">זהו שדה חובה.</div>
+                  <div class="invalid-feedback">
+                      זהו שדה חובה.
+                  </div>
                 </div>
 
 
-                <button type="submit" class="btn btn-info">שלח</button>
+                <button 
+                  type="submit" 
+                  class="btn btn-info">
+                      שלח
+                  </button>
               </form>
             </div>
           </div>

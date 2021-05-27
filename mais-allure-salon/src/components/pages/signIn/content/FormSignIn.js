@@ -106,7 +106,10 @@ class FormSignIn extends React.Component {
               כניסה לחשבון
             </h2>
           </div>
-          <form className='form justify-content-center'>
+          <form method='post' 
+                action='/signInData' 
+                className='form justify-content-center'>
+
             <div className='form-inputs'>
               <input
                 id='username'

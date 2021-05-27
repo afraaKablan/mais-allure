@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const homeDb = require('./HomeDB');
 
-module.exports.HomePage = (req, res) => {
-    res.json(homeDb.HomePageJson())
-    console.log(homeDb.HomePageJson())
+module.exports.HomePage = async (req, res) => {
+    res.json(await homeDb.HomePageJson())
+    // console.log(homeDb.HomePageJson())
 }

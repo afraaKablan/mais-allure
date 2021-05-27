@@ -10,8 +10,9 @@ class RightNavbarItems extends React.Component {
 
     render() {
         const rightmenuItems = this.props.data.map((singleItem) =>
-            <
-            NavbarItem item = { singleItem }
+            <NavbarItem 
+                item = { singleItem } 
+                dropDown_items={this.props.dropDown_items}
             />
         );
         return ( 

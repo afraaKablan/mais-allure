@@ -21,7 +21,7 @@ class Navbar extends React.Component {
               <span className = "navbar-toggler-icon" > </span> </button> 
               <div className = "collapse navbar-collapse"
               id = "collapsibleNavbar" >
-              <RightNavbarItems data = { this.props.data.NavRight }/> 
+              <RightNavbarItems data = { this.props.data.NavRight } dropDown_items={this.props.data.DropDownItems}/> 
               <LeftNavbarItems data = { this.props.data.NavLeft }/> 
               </div> 
             </nav> 

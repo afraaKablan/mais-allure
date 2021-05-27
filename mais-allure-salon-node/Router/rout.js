@@ -21,6 +21,7 @@ router.get('/', function(req, res) {
 router.get('/home', home.HomePage)
 router.get('/gallery', gallery.GalleryPage)
 router.get('/contact', contact.ContactUsPage)
+// router.post('/signInData', signIn)
 
 // define the about route
 router.get('/about', about.AboutUsPage)

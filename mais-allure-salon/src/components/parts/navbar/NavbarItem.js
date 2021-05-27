@@ -5,9 +5,14 @@ class NavbarItem extends React.Component {
   render() {
     let dropdownItems="";
     if (this.props.item.level == 2){
-      let dropitems = this.props.item.drop_items;
+      let dropitems = this.props.dropDown_items;
+      
       dropdownItems = dropitems.map((singleItem) =>
-                        <li><a href={singleItem.href}>{singleItem.title}</a></li>
+                        <li>
+                          <a href={singleItem.href}>
+                            {singleItem.optionTitle}
+                          </a>
+                        </li>
                       );
     }
     return(

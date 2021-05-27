@@ -12,8 +12,8 @@ class SocialMedia extends React.Component {
   render() {
     
     const medias = this.props.data.map((singleItem) =>
-        <
-        SocialMediaItem item = { singleItem }
+        <SocialMediaItem 
+          item = { singleItem }
         />
     );
     return (

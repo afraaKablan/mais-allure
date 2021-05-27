@@ -8,9 +8,9 @@ class SocialMediaItem extends React.Component {
     render() {
         return ( 
           <div >
-            <li id={this.props.item.id} className={this.props.item.className}>
-                <a className={this.props.item.linkClass} 
-                   href={this.props.item.linkHref}>
+            <li id={this.props.item.menuItem_id} className={this.props.item.cItem}>
+                <a className={this.props.item.cLink} 
+                   href={this.props.item.url}>
                     <i className={this.props.item.icon}></i>
                 </a>
             </li>

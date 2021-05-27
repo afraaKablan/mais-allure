@@ -8,7 +8,8 @@ class SalonItem extends React.Component {
         <a href={this.props.item.link}>
         <img
            class={this.props.item.classImg}
-           id={this.props.item.imgId}
+           id={this.props.item.id}
+           alt={this.props.item.alt}
            src={this.props.item.src}/></a>
         <p class={this.props.item.classTitle}>{this.props.item.title}</p>
       </div>

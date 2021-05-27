@@ -17,7 +17,7 @@ let FashionGalleryJson = () => {
 let CategoriesJson = () => {
     return categoriesJ;
 };
-
+//GalleryPageJson function getting the parameter category sending from controller 
 module.exports.GalleryPageJson = (category) => {
     if (!category){
         return ({

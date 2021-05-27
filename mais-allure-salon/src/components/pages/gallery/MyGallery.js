@@ -13,7 +13,7 @@ class MyGallery extends React.Component {
             data: []
         };
     }
-    
+    //sending parameter Category for node
     componentDidMount() {
         fetch(`/gallery?Category=`+ this.props.galleryType)
             .then(res => res.json())
