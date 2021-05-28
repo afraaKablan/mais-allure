@@ -71,7 +71,7 @@ class FormSignup extends React.Component {
       "password": this.state.password,
       "password2": this.state.password2
     }
-
+    //sending form data on button submition clicked 
     const response = await fetch('/user/signUpForm', {
       method: 'POST',
       body: JSON.stringify({data}),
@@ -81,10 +81,7 @@ class FormSignup extends React.Component {
     });
     const body = await response.text();
     this.setState({ dataResponse: body });
-   
     console.log("responddd"+this.state.dataResponse);
-
-
       // clear form
       this.setState(this.setState({username: ''}));
       this.setState(this.setState({email: ''}));
@@ -94,6 +91,7 @@ class FormSignup extends React.Component {
       this.setState(this.setState({emailERROR: ''}));
       this.setState(this.setState({passwordERROR: ''}));
       this.setState(this.setState({password2ERROR: ''}));
+      // this.setState(this.setState({dataResponse: ''}));
     }
   };
 
@@ -169,12 +167,13 @@ class FormSignup extends React.Component {
                 צרי חשבון
             </button>
           </div>
-
+          <p>{this.state.dataResponse}</p>
           <p className='form-input-login p-3'>
               יש לך חשבון קיים? לחץ
               <a href='#'> כאן </a>
               לכניסה
           </p>
+         
         </form>
       </div>
     );
