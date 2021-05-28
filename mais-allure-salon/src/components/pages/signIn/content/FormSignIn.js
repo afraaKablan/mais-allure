@@ -67,6 +67,21 @@ class FormSignIn extends React.Component {
       let user = this.state.username;
       console.log(this.state.username);
 
+    // const response = await fetch('/user/signIn', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //         user: {
+    //             name: this.state.username,
+    //             password: this.state.password
+    //         }
+    //     })
+    //  });
+    //  const body = await response.text();
+    //  this.setState({responseToPost: body})
+
       for (var i=0 ; i < RegisterUsers.length ; i++)
       {
         console.log(RegisterUsers[i].password);
@@ -144,9 +159,7 @@ class FormSignIn extends React.Component {
             </div>
 
             <p className='form-input-login p-3'>
-
                 <a href='#'> שכחת את הסיסמה? </a>
-
             </p>
           </form>
         </div>

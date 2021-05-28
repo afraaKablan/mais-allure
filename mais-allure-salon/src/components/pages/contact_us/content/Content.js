@@ -4,6 +4,10 @@ import './Content.css';
 
 class Content extends React.Component {
   render() {
+    const formItems = this.props.data.map((singleItem) =>
+      singleItem.type 
+    );
+
     return (
       <div id="content" class="container mt-5">
         <div id="inner" class="row bg-light">
@@ -71,7 +75,6 @@ class Content extends React.Component {
                   <textarea 
                     class="form-control" 
                     placeholder="תוכן ההודעה" >
-                  
                   </textarea>
                   <div class="valid-feedback"></div>
                   <div class="invalid-feedback">

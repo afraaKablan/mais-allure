@@ -24,7 +24,7 @@ class GalleryOptions extends React.Component {
     return (
       <div id='gallery'>
         <Header data = { this.state.data.Nav }
-                logoFlag = '1'
+                logoFlag = '0'
                 withMyPic = '0'
                 withLogo = '0'
                 logoClass = 'headerGallery divBackImgOptionsGal row'

@@ -11,8 +11,8 @@ class LeftNavbarItems extends React.Component {
 
     render() {
         const leftmenuItems = this.props.data.map((singleItem) =>
-            <
-            NavbarItem item = { singleItem }
+            <NavbarItem 
+                item = { singleItem }
             />
         );
 

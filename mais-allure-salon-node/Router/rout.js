@@ -25,9 +25,7 @@ router.get('/contact', contact.ContactUsPage)
 
 // define the about route
 router.get('/about', about.AboutUsPage)
-
 router.use('/products', products)
 router.use('/user', user)
-
 
 module.exports = router

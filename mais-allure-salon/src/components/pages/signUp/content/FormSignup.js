@@ -16,21 +16,9 @@ class FormSignup extends React.Component {
          emailERROR: '',
          passwordERROR: '',
          password2ERROR: '',
+         dataResponse: '',
        };
        this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  onNameChange(event) {
-      this.setState({username: event.target.value});
-  }
-  onEmailChange(event) {
-      this.setState({email: event.target.value});
-  }
-  onPasswordChange(event) {
-      this.setState({password: event.target.value});
-  }
-  onPassword2Change(event) {
-      this.setState({password2: event.target.value});
   }
   onSubmitClicked(event){
     this.setState({isSubmitBtnClicked: true});
@@ -72,11 +60,31 @@ class FormSignup extends React.Component {
     return true;
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
     let isValid = this.validate();
     if (isValid) {
       console.log(this.state);
+    let data = {
+      "username": this.state.username,
+      "email": this.state.email,
+      "password": this.state.password,
+      "password2": this.state.password2
+    }
+
+    const response = await fetch('/user/signUpForm', {
+      method: 'POST',
+      body: JSON.stringify({data}),
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    });
+    const body = await response.text();
+    this.setState({ dataResponse: body });
+   
+    console.log("responddd"+this.state.dataResponse);
+
+
       // clear form
       this.setState(this.setState({username: ''}));
       this.setState(this.setState({email: ''}));
@@ -111,7 +119,8 @@ class FormSignup extends React.Component {
               className='form-input'
               value={this.state.username}
               placeholder='הכנס שם משתמש'
-              onChange={this.onNameChange.bind(this)}
+              onChange={e => this.setState({ username: e.target.value })}
+      
             />
             {this.state.usernameERROR && <p>{this.state.usernameERROR}</p>}
           </div>
@@ -124,7 +133,7 @@ class FormSignup extends React.Component {
               className='form-input'
               placeholder='הכנס כתובת דואר אלקטרוני'
               value={this.state.email}
-              onChange={this.onEmailChange.bind(this)}
+              onChange={e => this.setState({ email: e.target.value })}
             />
             {this.state.emailERROR && <p>{this.state.emailERROR}</p>}
           </div>
@@ -136,7 +145,7 @@ class FormSignup extends React.Component {
               className='form-input'
               placeholder='הכנס סיסמה'
               value={this.state.password}
-              onChange={this.onPasswordChange.bind(this)}
+              onChange={e => this.setState({ password: e.target.value })}
             />
             {this.state.passwordERROR && <p>{this.state.passwordERROR}</p>}
           </div>
@@ -148,14 +157,14 @@ class FormSignup extends React.Component {
               className='form-input'
               placeholder=' הכנס סיסמה לאימות'
               value={this.state.password2}
-              onChange={this.onPassword2Change.bind(this)}
+              onChange={e => this.setState({ password2: e.target.value })}
             />
             {this.state.password2ERROR && <p>{this.state.password2ERROR}</p>}
           </div>
           <div className='form-inputs'>
             <button
                 className='form-input-btn '
-                type='submit'
+                type='button'
                 onClick={this.handleSubmit}>
                 צרי חשבון
             </button>
