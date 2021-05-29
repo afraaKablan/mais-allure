@@ -10,15 +10,23 @@ module.exports.InsertUserDetails = (user) => {
     let DbRes = DB.DbQuery(DbQuery);
     console.log("Query : "+ DbRes.toString());
     return DbRes;
-    // return servicesJ;
 };
+
+module.exports.UpdateUserDetail = (user) =>{
+    let DbQuery = "UPDATE `users_tb` SET `fname`='" + user.fname +"',"+
+                  " `lname`='" + user.lname +"',`phoneNum`='" + user.phoneNum +"',"+
+                  " `city_id`='" + user.city_id +"',`address`='" + user.address +"' "+
+                  " WHERE username like '" + user.username + "'";
+    let DbRes = DB.DbQuery(DbQuery);
+    return DbRes;
+}
+
 
 module.exports.GetUserDetail = (field,value) =>{
     let DbQuery = "SELECT username,password,email"+
                   " FROM `users_tb` "+
                   " WHERE "+field +" like '"+value+"';";
     let DbRes = DB.DbQuery(DbQuery);
-    // console.log("Query : "+ DbRes);
     return DbRes;
 }
 
