@@ -11,7 +11,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.get('/signIn', signIn.SignInJson);
 router.get('/signUp', signUp.SignUpJson);
 router.post('/signUpForm', signUp.SignUpFormHandler);
-
+router.post('/signInForm', signIn.SignInFormHandler);
 router.get('/profile', profile.ProfileJson);
 
 module.exports = router

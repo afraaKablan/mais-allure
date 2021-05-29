@@ -21,7 +21,8 @@ class Header extends React.Component {
                 ( <div id = "HEADER"
                     className = "container-fluid ${this.props.headerClass} ">
                     <Navbar data = { this.props.data }/>
-                    <Logo logoId = { this.props.logoId }
+                    <Logo logoData = {this.props.data.Logo[0]}
+                        logoId = { this.props.logoId }
                         withMyPic = { this.props.withMyPic }
                         withLogo = { this.props.withLogo }
                         logoTitle = { this.props.logoTitle }

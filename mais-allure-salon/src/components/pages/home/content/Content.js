@@ -41,7 +41,7 @@ class Content extends React.Component {
             {homePageCard}
           </div>
 
-          <Modal item={this.props.data.Modal} />
+          <Modal item={this.props.data.Modal[0]} />
         </div>
       </div>
     );

@@ -12,15 +12,8 @@ class Products extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isNailsChecked: true,
-            isFashionChecked: true,
-            isBeautyChecked: true,
             data: [],
-            displayData: []
         };
-        this.handleNailsChecked = this.handleNailsChecked.bind(this); // set this, because you need get methods from CheckBox
-        this.handleFashionChecked = this.handleFashionChecked.bind(this); // set this, because you need get methods from CheckBox
-        this.handleBeautyChecked = this.handleBeautyChecked.bind(this); // set this, because you need get methods from CheckBox
     }
 
     componentDidMount() {
@@ -29,30 +22,13 @@ class Products extends React.Component {
             .then(json => this.setState({ data: json }));
     }
 
-    handleNailsChecked() {
-        this.setState({ isNailsChecked: !this.state.isNailsChecked });
-        console.log(this.state.isNailsChecked);
-    }
-    handleFashionChecked() {
-        this.setState({ isFashionChecked: !this.state.isFashionChecked });
-        console.log(this.state.isNailsChecked);
-    }
-    handleBeautyChecked() {
-        this.setState({ isBeautyChecked: !this.state.isBeautyChecked });
-        console.log(this.state.isNailsChecked);
-    }
-
     render() {
         console.log(this.state.data)
         if (this.state.data.length == 0)
             return (<p> Ooops </p>)
             
         const products = this.state.data.Content.map((singleItem) =>
-            <ProdCard item = { singleItem }
-                      isNail = { this.state.isNailsChecked }
-                      isFashion = { this.state.isFashionChecked }
-                      isBeauty = { this.state.isBeautyChecked }
-            />
+            <ProdCard item = { singleItem }/>
         );
         return ( 
             <div >
@@ -77,7 +53,7 @@ class Products extends React.Component {
                 </div>
 
                 <Footer data={this.state.data.Footer.Social}
-                  contactData={this.state.data.Footer.ContactInfo} />            
+                  contactData={this.state.data.Footer.ContactInfo[0]} />            
             </div>
         );
     }

@@ -9,7 +9,7 @@ class Indicator extends React.Component {
   render() {
     return(
         <li data-target={this.props.target}
-            data-slide-to={this.props.carouselItem.index}
+            data-slide-to={this.props.carouselItem.carouselindex}
             class={this.props.carouselItem.indicClass}>
         </li>
     );

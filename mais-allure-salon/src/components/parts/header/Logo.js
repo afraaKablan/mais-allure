@@ -18,17 +18,17 @@ class Logo extends React.Component {
         (
           <div id={this.props.logoId} className= {this.props.logoClass} >
             <Animated animationIn="pulse" isVisible={true}>
-              <img className="img-fluid first col-6 ml-5" src={logo} alt="mais" />
+              <img className="img-fluid first col-6 ml-5" src={this.props.logoData.logoNameImg} alt={this.props.logoData.logoNameAlt} />
             </Animated>
 
             <div className="myPic">
-              <img className="img-fluid second rounded col-6" src={maislogo} alt="logo" />
+              <img className="img-fluid second rounded col-6" src={this.props.logoData.logoImage} alt={this.props.logoData.logoImageAlt} />
             </div>
           </div>):
         (
           <div id={this.props.logoId} className= {this.props.logoClass}>
             <div className="myPic">
-              <img className="img-fluid second rounded col-6" src={maislogo} alt="logo" />
+              <img className="img-fluid second rounded col-6" src={this.props.logoData.logoImage} alt={this.props.logoData.logoImageAlt} />
             </div>
           </div>
         )

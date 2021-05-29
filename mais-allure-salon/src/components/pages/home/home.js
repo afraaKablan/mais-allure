@@ -37,7 +37,7 @@ class Home extends React.Component {
                     logoClass = 'container-fluid'/>
             <Content data = { this.state.data.Content }/>
             <Footer data={this.state.data.Footer.Social}
-                    contactData={this.state.data.Footer.ContactInfo}/>
+                    contactData={this.state.data.Footer.ContactInfo[0]}/>
         </div>
         );
     }

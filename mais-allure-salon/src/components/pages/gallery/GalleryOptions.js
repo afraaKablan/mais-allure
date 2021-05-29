@@ -34,7 +34,7 @@ class GalleryOptions extends React.Component {
 
         <GalleryIndex data={this.state.data.Categories}/>
         <Footer data={this.state.data.Footer.Social}
-                        contactData={this.state.data.Footer.ContactInfo} />
+                        contactData={this.state.data.Footer.ContactInfo[0]} />
       </div>
     );
   }

@@ -2,13 +2,14 @@
 const express = require('express')
 const router = express.Router()
 const signUp = require ("./SignUpDB")
+const userDB = require ("../UserDB")
 
 let HandleUserData = async (user) =>{
-    let query = await signUp.CheckUserName(user.username);
+    let query = await userDB.GetUserDetail('username',user.username);
     if (query.length >0 )
         return ('שם משתמש תפוס');
     else
-        signUp.InsertUserDetails(user);
+        userDB.InsertUserDetails(user);
         return (`ברוכה הבאה  ${user.username} תהליך הרישום הסתיים בהצלחה נא לבצע כניסה`)
 }
 

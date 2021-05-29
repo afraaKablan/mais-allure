@@ -16,6 +16,7 @@ class SocialMedia extends React.Component {
           item = { singleItem }
         />
     );
+
     return (
       <div id="FOOTER" className="mt-5 ml-0 mr-0">
         <ul id="mediaBar" className="nav justify-content-center mt-4 mb-2">

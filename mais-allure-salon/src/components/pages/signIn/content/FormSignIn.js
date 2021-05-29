@@ -19,12 +19,12 @@ class FormSignIn extends React.Component {
        this.component = '';
   }
 
-  onNameChange(event) {
-      this.setState({username: event.target.value});
-  }
-  onPasswordChange(event) {
-      this.setState({password: event.target.value});
-  }
+  // onNameChange(event) {
+  //     this.setState({username: event.target.value});
+  // }
+  // onPasswordChange(event) {
+  //     this.setState({password: event.target.value});
+  // }
 
   validate = () => {
     let usernameERROR = "";
@@ -45,56 +45,28 @@ class FormSignIn extends React.Component {
     return true;
   };
 
-
-  checkPass = userName => {
-    for (var i=0 ; i < RegisterUsers.length ; i++)
-    {
-        if (RegisterUsers[i].username == userName) {
-            if (RegisterUsers[i].password == this.state.password)
-              return 1;
-            else
-              return 0;
-        }
-    }
-    return -1;
-  }
-
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
     this.setState({isSubmitBtnClicked: true});
     let isValid = this.validate();
     if (isValid) {
       let user = this.state.username;
       console.log(this.state.username);
-
-    // const response = await fetch('/user/signIn', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         user: {
-    //             name: this.state.username,
-    //             password: this.state.password
-    //         }
-    //     })
-    //  });
-    //  const body = await response.text();
-    //  this.setState({responseToPost: body})
-
-      for (var i=0 ; i < RegisterUsers.length ; i++)
-      {
-        console.log(RegisterUsers[i].password);
-        console.log(RegisterUsers[i].username);
-          if (RegisterUsers[i].username === user) {
-              if (RegisterUsers[i].password === this.state.password)
-                this.component = <UserProfilePage user = {this.state.username} />;
-
-              else
-                this.component = <InCorrectInfo />;
-          }
+      let data = {
+        "username": this.state.username,
+        "password": this.state.password
       }
-      this.component = <InCorrectInfo />;
+      //sending form data on button submition clicked 
+      const response = await fetch('/user/signInForm', {
+        method: 'POST',
+        body: JSON.stringify({data}),
+        headers: {
+          'Content-Type' : 'application/json'
+        }
+      });
+      const body = await response.text();
+      this.setState({ dataResponse: body });
+      console.log("responddd"+this.state.dataResponse);
 
       // clear form
       this.setState(this.setState({username: ''}));
@@ -131,7 +103,7 @@ class FormSignIn extends React.Component {
                 className='form-input'
                 value={this.state.username}
                 placeholder='הכנס שם משתמש'
-                onChange={this.onNameChange.bind(this)}
+                onChange={e => this.setState({ username: e.target.value })}
               />
               {this.state.usernameERROR && <p>{this.state.usernameERROR}</p>}
             </div>
@@ -144,7 +116,7 @@ class FormSignIn extends React.Component {
                 className='form-input'
                 placeholder='הכנס סיסמה'
                 value={this.state.password}
-                onChange={this.onPasswordChange.bind(this)}
+                onChange={e => this.setState({ password: e.target.value })}
               />
               {this.state.passwordERROR && <p>{this.state.passwordERROR}</p>}
             </div>
@@ -157,6 +129,7 @@ class FormSignIn extends React.Component {
                   כניסה
               </button>
             </div>
+            <p>{this.state.dataResponse}</p>
 
             <p className='form-input-login p-3'>
                 <a href='#'> שכחת את הסיסמה? </a>
