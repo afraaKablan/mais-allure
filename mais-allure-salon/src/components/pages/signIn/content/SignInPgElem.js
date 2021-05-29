@@ -17,19 +17,13 @@ class SignInPgElem extends React.Component {
   render() {
     return (
       <div className='sign row'>
-        <FormSignIn />
+        <FormSignIn formItems ={this.props.data.FormItems} formExtra = {this.props.data.FormExtra[0]} />
         <SideDivWithBtn
+          sideData = {this.props.data.SideData[0]}
           isBtnIn ='1'
-          outClass='form-content-right col-md-6 text-center'
-          inClass='form-signin1'
-          hClass='welcome1'
-          title=' ברוכה הבאה!'
           msgClass='msg'
-          msg='תצטרפי למועדון הלקוחות שלנו, ותהני מהטבות!'
-          href='/signUp'
           innerElem='sign-in-btn'
           onClickTogle='{this.onBtnClicked.bind(this)}'
-          btnText='הרשמה'
         />
       </div>
     );

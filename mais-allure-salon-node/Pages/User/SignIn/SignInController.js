@@ -18,12 +18,12 @@ let HandleUserData = async (user) =>{
         return (`שם משתמש לא נמצא`)
 }
 
-module.exports.SignInJson = async (req, res) => {
-    res.json (await signIn.SignInJson());
-}
-
 module.exports.SignInFormHandler = async (req, res) =>{
     console.log(req.body.data.username);
     let str = await HandleUserData(req.body.data);
     res.send(str);
+}
+
+module.exports.SignInJson = async (req, res) => {
+    res.json (await signIn.SignInJson());
 }

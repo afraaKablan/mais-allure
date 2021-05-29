@@ -6,7 +6,12 @@ const Footer = require('../../Parts/Footer/FooterDB');
 const DB = require('../../dataBase.js')
 
 let CategoriesJson = () => {
-    let DbQuery = "SELECT * FROM `galleryindex_tb` WHERE 1;";
+    let DbQuery = "SELECT txt.*, pg.page "+
+                  " FROM `text_tb` AS txt" +
+                  " INNER JOIN page_tb AS pg"+
+                  "    ON txt.page_id = pg.id"+
+                  " WHERE txt.description like 'sideDiv'"+
+                  " AND pg.page like 'gallery';";
     let DbRes = DB.DbQuery(DbQuery);
     console.log("Query : "+ DbRes.toString());
     return DbRes;

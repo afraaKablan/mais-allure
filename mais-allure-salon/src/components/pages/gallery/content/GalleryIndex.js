@@ -12,15 +12,13 @@ class GalleryIndex extends React.Component {
   onBtnClicked(event) {
       this.setState({isBtnClicked: !this.state.isBtnClicked})
   } 
+  
   render() {
     const categories = this.props.data.map((singleItem) =>
         <SideDivWithBtn
-            isBtnIn = {singleItem.isBtnIn}
-            inClass = {singleItem.inClass}
-            hClass = {singleItem.hClass}
-            title = {singleItem.title}
-            href = {singleItem.href}
-            innerElem = {singleItem.innerElem}
+          sideData = {singleItem}
+          isBtnIn ='0'
+          innerElem='inDiv'
         />
     );
     return (

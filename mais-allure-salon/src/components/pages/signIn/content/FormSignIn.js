@@ -4,7 +4,7 @@ import './FormSignIn.css'
 import {RegisterUsers} from '../../Users/RegisterUsers'
 import UserProfilePage from '../../Users/UserProfilePage'
 import InCorrectInfo from '../../Users/InCorrectInfo'
-
+import FormItem from './FormItem.js'
 class FormSignIn extends React.Component {
   constructor(props) {
        super(props);
@@ -16,15 +16,17 @@ class FormSignIn extends React.Component {
          isSubmitBtnClicked: false,
        };
        this.handleSubmit = this.handleSubmit.bind(this);
+       this.onNameChange = this.onNameChange.bind(this);
+       this.onPasswordChange = this.onPasswordChange.bind(this);
        this.component = '';
   }
 
-  // onNameChange(event) {
-  //     this.setState({username: event.target.value});
-  // }
-  // onPasswordChange(event) {
-  //     this.setState({password: event.target.value});
-  // }
+  onNameChange(event) {
+    this.setState({username: event.target.value});
+  }
+  onPasswordChange(event) {
+      this.setState({password: event.target.value});
+  }
 
   validate = () => {
     let usernameERROR = "";
@@ -78,17 +80,23 @@ class FormSignIn extends React.Component {
     }
   };
 
+  OnUserNameChange =async event =>{
+        this.setState({ username: event.target.value });
+  }
   render() {
+      const formItems = this.props.formItems.map((singleItem) =>
+        <FormItem item = {singleItem}/>
+      );
       return (
         <div className='form-content-left col-md-6 text-center' >
           <div className='welcome'>
             <h3>
-              ברוכה השבה, כנסי ותהני מהטבות
+              {this.props.formExtra.subTitle}
             </h3>
           </div>
           <div className='createMsg'>
             <h2>
-              כניסה לחשבון
+            {this.props.formExtra.title}
             </h2>
           </div>
           <form method='post' 
@@ -103,9 +111,10 @@ class FormSignIn extends React.Component {
                 className='form-input'
                 value={this.state.username}
                 placeholder='הכנס שם משתמש'
-                onChange={e => this.setState({ username: e.target.value })}
+                onChange={this.onNameChange}
               />
               {this.state.usernameERROR && <p>{this.state.usernameERROR}</p>}
+
             </div>
 
             <div className='form-inputs'>
@@ -116,9 +125,10 @@ class FormSignIn extends React.Component {
                 className='form-input'
                 placeholder='הכנס סיסמה'
                 value={this.state.password}
-                onChange={e => this.setState({ password: e.target.value })}
+                onChange={this.onPasswordChange}
               />
               {this.state.passwordERROR && <p>{this.state.passwordERROR}</p>}
+
             </div>
 
             <div className='form-inputs'>
@@ -130,9 +140,9 @@ class FormSignIn extends React.Component {
               </button>
             </div>
             <p>{this.state.dataResponse}</p>
-
+           
             <p className='form-input-login p-3'>
-                <a href='#'> שכחת את הסיסמה? </a>
+                <a href='#'>{this.props.formExtra.extra} </a>
             </p>
           </form>
         </div>

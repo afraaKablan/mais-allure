@@ -26,7 +26,7 @@ class SignIn extends React.Component {
       <div id='signIn'>
         <Header data = { this.state.data.Nav }
                 logoFlag = '0' />
-        <SignInPgElem />
+        <SignInPgElem data ={this.state.data.Content} />
         <Footer data={this.state.data.Footer.Social}
                   contactData={this.state.data.Footer.ContactInfo} />
       </div>

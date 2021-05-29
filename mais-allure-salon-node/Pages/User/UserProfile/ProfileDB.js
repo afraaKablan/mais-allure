@@ -22,10 +22,10 @@ let  Content= () => {
     });
 };
 
-module.exports.ProfilePageJson = (req, res) => {
+module.exports.ProfilePageJson = async (req, res) => {
     return ({
-        "Nav": NavBar.NavBarJson(),
+        "Nav":await NavBar.NavBarJson(),
         "Content": Content(),
-        "Footer" : Footer.FooterJson()
+        "Footer" : await Footer.FooterJson()
     });
 }
