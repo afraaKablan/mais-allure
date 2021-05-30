@@ -139,8 +139,10 @@ class FormSignIn extends React.Component {
                   כניסה
               </button>
             </div>
-            <p>{this.state.dataResponse}</p>
-           
+            <div className='form-inputs'>
+                  <p>{this.state.dataResponse}</p>
+            </div>
+      
             <p className='form-input-login p-3'>
                 <a href='#'>{this.props.formExtra.extra} </a>
             </p>

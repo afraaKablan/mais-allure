@@ -5,13 +5,13 @@ const Footer = require('../../Parts/Footer/FooterDB');
 // const categoriesJ = require('./GalleryCategoriesJ.json');
 const DB = require('../../dataBase.js')
 
-let CategoriesJson = () => {
+//
+let CategoriesJson = (page) => {
     let DbQuery = "SELECT txt.*, pg.page "+
                   " FROM `text_tb` AS txt" +
                   " INNER JOIN page_tb AS pg"+
                   "    ON txt.page_id = pg.id"+
-                  " WHERE txt.description like 'sideDiv'"+
-                  " AND pg.page like 'gallery';";
+                  " WHERE pg.page like '"+page+"';";
     let DbRes = DB.DbQuery(DbQuery);
     console.log("Query : "+ DbRes.toString());
     return DbRes;
@@ -34,7 +34,7 @@ module.exports.GalleryPageJson = async (category) => {
     if (!category){
         return ({
             "Nav" : await NavBar.NavBarJson(),
-            "Categories" : await CategoriesJson(),
+            "Categories" : await CategoriesJson('gallery'),
             "Footer" : await Footer.FooterJson()
         });
     }

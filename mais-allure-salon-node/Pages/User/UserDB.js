@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const DB = require('../../dataBase.js')
 
-
 module.exports.InsertUserDetails = (user) => {
     let DbQuery = "INSERT INTO `users_tb` (`userId`, `fname`, `lname`, `username`, `password`, `email`, `phoneNum`, `city_id`, `address`, `photo_id`)"+
                   " VALUES (NULL, NULL, NULL, '" + user.username + "',"+

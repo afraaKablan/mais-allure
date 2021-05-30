@@ -9,6 +9,7 @@ let GetMenuElementFromDB = (dir, menuType, level, parentId) => {
         cond =  " AND mt.parent_id IS NULL;" ;
     else 
         cond =" AND mt.parent_id ="+ parentId +";"
+
     let DbQuery = "SELECT mt.*, mlt.menu_name, mdr.direction"+
                     " FROM `menuitems_tb` AS mt"+
                     " INNER JOIN menulist_tb AS mlt"+
@@ -25,7 +26,6 @@ let GetMenuElementFromDB = (dir, menuType, level, parentId) => {
 };
 
 let AppendQueryResults = async () =>{
-    let extra = {}
     menuQ =  await GetMenuElementFromDB('right','header',1,null)
 
     let data = await Promise.all(menuQ.map(async singleItem => {
@@ -34,7 +34,7 @@ let AppendQueryResults = async () =>{
         else if(singleItem.isDrop == 1){
             let drop_downs = await GetMenuElementFromDB('right','header',singleItem.level + 1 ,singleItem.menuItem_id);
             singleItem.drop_items = drop_downs;
-     
+    
             return singleItem;
         } 
     }))
