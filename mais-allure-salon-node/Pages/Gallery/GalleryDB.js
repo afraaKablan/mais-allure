@@ -5,7 +5,7 @@ const Footer = require('../../Parts/Footer/FooterDB');
 // const categoriesJ = require('./GalleryCategoriesJ.json');
 const DB = require('../../dataBase.js')
 
-//
+// Getting indecies data from DB
 let CategoriesJson = (page) => {
     let DbQuery = "SELECT txt.*, pg.page "+
                   " FROM `text_tb` AS txt" +
@@ -18,6 +18,8 @@ let CategoriesJson = (page) => {
     // return categoriesJ;
 };
 
+// This function gets parameter category 
+// Gets images from DB where the images category = param category 
 let GetImages = (category) => {
     let DbQuery = "SELECT it.*, cat.categoryName" + 
                   " FROM images_tb AS it" + 
@@ -29,7 +31,8 @@ let GetImages = (category) => {
     return DbRes;
 }
 
-//GalleryPageJson function getting the parameter category sending from controller 
+// GalleryPageJson function getting the parameter category sending 
+// from GallerController and return the json accordingly 
 module.exports.GalleryPageJson = async (category) => {
     if (!category){
         return ({

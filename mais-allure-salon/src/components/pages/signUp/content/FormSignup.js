@@ -65,13 +65,14 @@ class FormSignup extends React.Component {
     let isValid = this.validate();
     if (isValid) {
       console.log(this.state);
+    // preparing user's data 
     let data = {
       "username": this.state.username,
       "email": this.state.email,
       "password": this.state.password,
       "password2": this.state.password2
     }
-    //sending form data on button submition clicked 
+    // sending form data on button submition clicked 
     const response = await fetch('/user/signUpForm', {
       method: 'POST',
       body: JSON.stringify({data}),
@@ -82,7 +83,8 @@ class FormSignup extends React.Component {
     const body = await response.text();
     this.setState({ dataResponse: body });
     console.log("responddd"+this.state.dataResponse);
-      // clear form
+      
+    // clear form
       this.setState(this.setState({username: ''}));
       this.setState(this.setState({email: ''}));
       this.setState(this.setState({password: ''}));
