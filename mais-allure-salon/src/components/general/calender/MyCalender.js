@@ -1,29 +1,114 @@
 import React from "react";
 import './MyCalender.css'
 class Calender extends React.Component {
+    months = ["January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December",
+                ];
+    
   constructor(props){
     super(props);
-    const date = new Date();
+    this.state = {
+        date: new Date(),
+        month: new Date().getMonth(),
+        Prevdays: "",
+        days: "",
+        nextD: "",
+        dateView: ""
 
-    const month = date.getMonth();
-    console.log(month);
+    };
   }
-//   callBackFunction = value => {
-//     alert("The selection is  -> ", value);
- // };
+  renderCalender = (getDate) =>{
+    this.setState({dateView : new Date().toDateString(),
+                   date: getDate}) 
+    let daysArray =[];
+    let prevDays = [];
+    let nextdays = [];
+    let lastDay = new Date( getDate.getFullYear(), getDate.getMonth() + 1,0).getDate();
+    let prevLastDay =  new Date( getDate.getFullYear(), getDate.getMonth(),0).getDate();
+    let lastDayIndex =  new Date( getDate.getFullYear(), getDate.getMonth()+1 ,0).getDay();
+    let nextDays = 7- lastDayIndex -1;
+    console.log(getDate)
+    for (let i=0; i< lastDay; i++){
+        daysArray[i] = i+1 ; 
+    }
+    const days = daysArray.map((i) =>{
+        if (i === new Date().getDate() && 
+        getDate.getMonth() === new Date().getMonth())
+            return (<div className='today'>{i}</div>);
+        return (<div>{i}</div>);
+                          
+      });
+    console.log(daysArray );
+    this.setState({days: days })
 
- 
+    //creating prev days from prev month
+    getDate.setDate(1);
+    let firsDayIndex = getDate.getDay();
+
+    for (let i=firsDayIndex, j=0; i>0; i--){
+        prevDays[j++] = prevLastDay - i;
+    }
+    const Prevdays = prevDays.map((i) =>{
+        return (<div className='prev-date'>{i}</div>);                
+    });
+    this.setState({Prevdays: Prevdays })
+    //next days 
+    for (let j=1, i=0 ; j<= nextDays; j++){
+        nextdays [i++]= j ;
+    }
+    const nextD = nextdays.map((i) =>{
+        return (<div className='next-date'>{i}</div>);                
+    });
+    this.setState({nextD: nextD })
+  }
+
+  nextClicked = async ()=>{
+    let getDate = this.state.date;
+    let curMonth = getDate.getMonth();
+    await getDate.setMonth(curMonth + 1);
+    await this.setState({date: getDate});
+    console.log("dateeeeee on clicke   "+await  this.state.date)
+    await this.renderCalender(this.state.date)
+    
+  }
+  prevClicked = ()=>{
+    let getDate = this.state.date;
+    let curMonth = getDate.getMonth();
+    getDate.setMonth(curMonth - 1);
+
+    this.setState({date: getDate});
+  }
+
+  componentDidMount(){
+    this.renderCalender(this.state.date)
+  }
+
   render() {
+
     return (
       <div id='calender' className='container'>
           <div className='calender'>
             <div className='month'>
-            <i className='fas fa-angle-right next'></i>
+                <i className='fas fa-angle-right next' 
+                   onClick={this.nextClicked}>               
+                </i>
                 <div className='date'>
-                    <h1>May</h1>
-                    <p>Fri May 29,2020</p>
+                    <h1>{this.months[this.state.date.getMonth()]}</h1>
+                    <p>{this.state.date.toDateString()}</p>
                 </div>
-                <i className='fas fa-angle-left prev'></i>
+                <i className='fas fa-angle-left prev' 
+                   onClick={this.prevClicked}>
+                </i>
             </div>
             <div className='weekdays'>
                 <div>Sun</div>
@@ -35,48 +120,9 @@ class Calender extends React.Component {
                 <div>Sat</div>
             </div>
             <div className='days'>
-                <div className='prev-date'>26</div>
-                <div className='prev-date'>27</div>
-                <div className='prev-date'>28</div>
-                <div className='prev-date'>29</div>
-                <div className='prev-date'>30</div>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div>6</div>
-                <div className='today'>7</div>
-                <div>8</div>
-                <div>9</div>
-                <div>10</div>
-                <div>11</div>
-                <div>12</div>
-                <div>13</div>
-                <div>14</div>
-                <div>15</div>
-                <div>16</div>
-                <div>17</div>
-                <div>18</div>
-                <div>19</div>
-                <div>20</div>
-                <div>21</div>
-                <div>22</div>
-                <div>23</div>
-                <div>24</div>
-                <div>25</div>
-                <div>26</div>
-                <div>27</div>
-                <div>28</div>
-                <div>29</div>
-                <div>30</div>
-                <div>31</div>
-                <div className='next-date'>1</div>
-                <div className='next-date'>2</div>
-                <div className='next-date'>3</div>
-                <div className='next-date'>4</div>
-                <div className='next-date'>5</div>
-                <div className='next-date'>6</div>
+                {this.state.Prevdays}
+                {this.state.days}
+                {this.state.nextD}
 
             </div>
           </div>
