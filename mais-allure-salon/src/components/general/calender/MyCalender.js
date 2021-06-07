@@ -41,7 +41,11 @@ class Calender extends React.Component {
     for (let i=0; i< lastDay; i++){
         daysArray[i] = i+1 ; 
     }
+    let getDateMonth = getDate.getMonth();
+    let getDateYear = getDate.getFullYear();
+
     const days = daysArray.map((i) =>{
+        console.log(this.changeDateFotmat(i,getDateMonth,getDateYear));
         if (i === new Date().getDate() && 
         getDate.getMonth() === new Date().getMonth())
             return (<div className='today'>{i}</div>);
@@ -56,7 +60,7 @@ class Calender extends React.Component {
     let firsDayIndex = getDate.getDay();
 
     for (let i=firsDayIndex, j=0; i>0; i--){
-        prevDays[j++] = prevLastDay - i;
+        prevDays[j++] = prevLastDay - i+1;
     }
     const Prevdays = prevDays.map((i) =>{
         return (<div className='prev-date'>{i}</div>);                
@@ -71,7 +75,15 @@ class Calender extends React.Component {
     });
     this.setState({nextD: nextD })
   }
-
+  changeDateFotmat = (day,month,year) =>{
+    if (day >= 1 && day <= 9 && month >= 1 && month <= 9)
+        return ("0"+day+"/0"+month+"/"+year);
+    else if (day >= 1 && day <= 9 && month>9)
+        return ("0"+day+"/"+month+"/"+year);
+    else
+        return (+day+"/"+month+"/"+year);
+ 
+  }
   nextClicked = async ()=>{
     let getDate = this.state.date;
     let curMonth = getDate.getMonth();
@@ -81,12 +93,14 @@ class Calender extends React.Component {
     await this.renderCalender(this.state.date)
     
   }
-  prevClicked = ()=>{
+  prevClicked = async ()=>{
     let getDate = this.state.date;
     let curMonth = getDate.getMonth();
-    getDate.setMonth(curMonth - 1);
+    await getDate.setMonth(curMonth - 1);
 
-    this.setState({date: getDate});
+    await this.setState({date: getDate});
+    await this.renderCalender(this.state.date)
+
   }
 
   componentDidMount(){
@@ -94,7 +108,7 @@ class Calender extends React.Component {
   }
 
   render() {
-
+    
     return (
       <div id='calender' className='container'>
           <div className='calender'>
@@ -104,7 +118,7 @@ class Calender extends React.Component {
                 </i>
                 <div className='date'>
                     <h1>{this.months[this.state.date.getMonth()]}</h1>
-                    <p>{this.state.date.toDateString()}</p>
+                    <p>{new Date().toDateString()}</p>
                 </div>
                 <i className='fas fa-angle-left prev' 
                    onClick={this.prevClicked}>
