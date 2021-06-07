@@ -7,4 +7,3 @@ module.exports.GalleryPage = async (req,res) => {
     // console.log(GalleryDb.GalleryPageJson(category))
 }
 
-

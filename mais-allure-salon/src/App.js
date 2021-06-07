@@ -21,7 +21,10 @@ import Calender from './components/general/calender/Calender'
 import UserProfilePage from './components/pages/Users/UserProfilePage'
 import NailsGallery from './components/pages/gallery/content/NailsGallery'
 import FashionGallery from './components/pages/gallery/content/FashionGallery'
- 
+import AppointmentsIndecies from './components/pages/appointment/content/AppointmentsIndecies'
+import BioAppoint from './components/pages/appointment/content/bioHandsAppointment'
+import MyCalender from './components/general/calender/MyCalender'
+
 class App extends React.Component {
   render() {
     return (
@@ -32,13 +35,16 @@ class App extends React.Component {
               <Route path="/about" component={AboutUs} exact />
               <Route path="/signUp" component={SignUp} exact />
               <Route path="/signIn" component={SignIn} exact />
-              <Route path="/MyGallery" component={MyGallery} exact />
+              {/* <Route path="/MyGallery" component={MyGallery} exact /> */}
               <Route path="/NailsGallery" component={NailsGallery} exact />
               <Route path="/FashionGallery" component={FashionGallery} exact />
               <Route path="/gallery" component={GalleryOptions} exact />
-              <Route path="/calender" component={Calender} exact />
+              {/* <Route path="/calender" component={Calender} exact /> */}
               <Route path="/products" component={Products} exact />
               <Route path="/profile" component={UserProfilePage} exact />
+              <Route path="/BioHands" component={BioAppoint} exact />
+              <Route path="/Appointment" component={AppointmentsIndecies} exact />
+              <Route path="/calender" component={MyCalender} exact />
 
               <Route component={Error}  />
           </Switch>

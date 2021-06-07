@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import InfoRight from './InfoRight'
-import InfoLeft from './InfoLeft'
+import InfoCard from '../../../general/InfoCard/InfoCard'
+import InfoExtra from './InfoExtra'
 
 class Line extends React.Component {
     constructor(props){
@@ -10,19 +10,25 @@ class Line extends React.Component {
     }
 
   render() {
+    console.log("tRGET"+this.props.data.target);
+    console.log("MODULO TARGET" + parseInt(this.props.data.target) %2 === 0);
     return (
-      <div>
-        <InfoRight infoID={this.props.infoIDR} 
-                   infoClass={this.props.infoClassR} 
-                   card = {this.props.cardR} 
-                   extraInfo = {this.props.extraInfoR}
-        />
-        <InfoLeft  infoID={this.props.infoIDL} 
-                   infoClass={this.props.infoClassL} 
-                   card = {this.props.cardL} 
-                   extraInfo = {this.props.extraInfoL}
-        />
-      </div>
+      (parseInt(this.props.data.target) %2 === 0 )?(
+
+        <div class='row justify-content-center mr-1 aboutLine pt-5'>
+            <InfoExtra item = {this.props.data}/> 
+            <InfoCard item = {this.props.data}/>
+            
+        </div>
+        ):
+        (
+          <div class = 'row justify-content-center mr-1 aboutLine pt_5'>
+                <InfoCard item = {this.props.data}/>
+                <InfoExtra item = {this.props.data}/> 
+                
+          </div>
+        )
+
     )
   }
 }

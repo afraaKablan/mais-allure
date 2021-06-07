@@ -11,14 +11,7 @@ class Content extends React.Component {
   render() {
     console.log("aboutUS data" + this.props.data)
     const aboutPageLine = this.props.data.map((singleItem) =>
-      <Line infoIDR={singleItem.infoIDR}
-            infoClassR={singleItem.infoClassR} 
-            cardR= {singleItem.CardR}
-            extraInfoR = {singleItem.ExtraR}
-            infoIDL={singleItem.infoIDL}
-            infoClassL={singleItem.infoClassL} 
-            cardL= {singleItem.CardL}
-            extraInfoL = {singleItem.ExtraL}
+      <Line data = {singleItem}
       />
     );
     return (

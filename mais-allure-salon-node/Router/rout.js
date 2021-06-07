@@ -1,10 +1,11 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
 const products = require('../Pages/Products/ProductController.js')
-var home = require('../Pages/Home/HomeController.js')
-var about = require('../Pages/AboutUs/AboutUsController.js')
-var gallery = require('../Pages/Gallery/GalleryController.js')
-var contact = require('../Pages/ContactUs/ContactUsController.js')
+const home = require('../Pages/Home/HomeController.js')
+const about = require('../Pages/AboutUs/AboutUsController.js')
+const gallery = require('../Pages/Gallery/GalleryController.js')
+const appoint = require('../Pages/Appointments/AppointmentsController.js')
+const contact = require('../Pages/ContactUs/ContactUsController.js')
 var user = require('../Pages/User/UserController.js')
 
 // middleware that is specific to this router
@@ -20,6 +21,7 @@ router.get('/', function(req, res) {
 
 router.get('/home', home.HomePage)
 router.get('/gallery', gallery.GalleryPage)
+router.get('/appointment', appoint.AppountmentsPage)
 router.get('/contact', contact.ContactUsPage)
 // router.post('/signInData', signIn)
 

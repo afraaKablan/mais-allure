@@ -13,6 +13,7 @@ class MyGallery extends React.Component {
             data: []
         };
     }
+
     //sending parameter Category for node
     componentDidMount() {
         fetch(`/gallery?Category=`+ this.props.galleryType)
@@ -29,11 +30,11 @@ class MyGallery extends React.Component {
             <div >
                 <Header data = { this.state.data.Nav}
                         logoFlag = '0'
-                        withMyPic = '0'
-                        withLogo = '0'
-                        logoClass = 'headerNailsGallery divBackImg2 row'
-                        pgTitle = 'גלריית תומונות ציפורניים'
-                        innerDivClass = 'galLogoInner' 
+                        // withMyPic = '0'
+                        // withLogo = '0'
+                        // logoClass = 'headerNailsGallery divBackImg2 row'
+                        // pgTitle = 'גלריית תומונות ציפורניים'
+                        // innerDivClass = 'galLogoInner' 
                 />
 
                 <PopupWidget color = "#00a2ff"
