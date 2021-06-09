@@ -1,0 +1,25 @@
+.appoint{
+    height: auto;
+    width: 90%;
+    /* background-image: url("../../../../img/wide.jfif"); */
+    background-color: white;
+    border: 2px solid rgb(66, 64, 64);
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px #aaaaaa
+    /* display: none; */
+}
+
+.content{
+    margin-right: 0%;
+    margin-top: 10%;
+}
+
+.line{
+    /* border: 2px solid rgb(153, 146, 146); */
+    border-radius:5px;
+
+}
+button{
+    width: 80%;
+    margin-top: 5px;
+}

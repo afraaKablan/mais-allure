@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from '../../parts/header/Header.js'
 import Footer from '../../parts/footer/Footer.js'
-import Content from './content/content.js'
+// import MyCalenderApp from './MyCalenderApp.js'
+import MyCalender from '../../general/calender/MyCalender.js'
 
 import './appointment.css'
 
@@ -29,7 +30,7 @@ class Appointment extends React.Component {
             <Header data = { this.state.data.Nav}
                         logoFlag = '0'
             />
-            <Content data = { this.state.data.Content}/>
+            <MyCalender data = { this.state.data.Content}/>
             <Footer data={this.state.data.Footer.Social}
                     contactData={this.state.data.Footer.ContactInfo[0]}/>
         </div>

@@ -89,6 +89,7 @@
 
 .modal-title{
   font-family: ganFont,sans-serif;
+  text-align: center;
 }
 
 @media screen and (max-width: 600px) {

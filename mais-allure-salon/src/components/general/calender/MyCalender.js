@@ -1,5 +1,8 @@
 import React from "react";
 import './MyCalender.css'
+import { Modal, ModalHeader, ModalBody} from 'reactstrap';
+import Content from './Content/Content'
+
 class Calender extends React.Component {
     months = ["January",
                     "February",
@@ -13,8 +16,7 @@ class Calender extends React.Component {
                     "October",
                     "November",
                     "December",
-                ];
-    
+                ];    
   constructor(props){
     super(props);
     this.state = {
@@ -23,10 +25,24 @@ class Calender extends React.Component {
         Prevdays: "",
         days: "",
         nextD: "",
-        dateView: ""
+        dateView: "",
+        flag:0,
+        dateIndex : null,
+        isModalOpen: false,
+        appointments : this.props.data.Appointments
 
     };
+    this.toggleModal = this.toggleModal.bind(this)
+
   }
+
+  toggleModal(index) {
+    this.setState({
+        dateIndex : index,
+        isModalOpen: !this.state.isModalOpen
+    });
+  } 
+
   renderCalender = (getDate) =>{
     this.setState({dateView : new Date().toDateString(),
                    date: getDate}) 
@@ -38,21 +54,39 @@ class Calender extends React.Component {
     let lastDayIndex =  new Date( getDate.getFullYear(), getDate.getMonth()+1 ,0).getDay();
     let nextDays = 7- lastDayIndex -1;
     console.log(getDate)
+
     for (let i=0; i< lastDay; i++){
         daysArray[i] = i+1 ; 
     }
-    let getDateMonth = getDate.getMonth();
+
+    let getDateMonth = getDate.getMonth()+1;
     let getDateYear = getDate.getFullYear();
+    let myFlag = 0 ;
 
     const days = daysArray.map((i) =>{
-        console.log(this.changeDateFotmat(i,getDateMonth,getDateYear));
-        if (i === new Date().getDate() && 
-        getDate.getMonth() === new Date().getMonth())
+        myFlag = 0;
+        this.props.data.AppDates.forEach(element => {
+         
+            if (!(element.date.toString().trim().localeCompare(this.changeDateFotmat(i,getDateMonth,getDateYear).trim()))){
+                this.setState({dateIndex: element.app_id});
+                myFlag =1;  
+            }
+        });
+        //flag = 1 means that for spesific date there is open appointments hours 
+        if (i === new Date().getDate() && getDate.getMonth() === new Date().getMonth() && (!myFlag)){
             return (<div className='today'>{i}</div>);
-        return (<div>{i}</div>);
-                          
+        }
+        else if(i === new Date().getDate() && getDate.getMonth() === new Date().getMonth() && (myFlag)){
+            return (<div className='today exist' onClick={e => this.toggleModal(i)}>{i}</div>);
+        }
+
+        else if(myFlag){
+            return (<div className='exist' onClick={e => this.toggleModal(i)}>{i}</div>)
+        }
+        else{
+            return (<div>{i}</div>);
+        }             
       });
-    console.log(daysArray );
     this.setState({days: days })
 
     //creating prev days from prev month
@@ -78,10 +112,10 @@ class Calender extends React.Component {
   changeDateFotmat = (day,month,year) =>{
     if (day >= 1 && day <= 9 && month >= 1 && month <= 9)
         return ("0"+day+"/0"+month+"/"+year);
-    else if (day >= 1 && day <= 9 && month>9)
+    else if (day >= 1 && day <= 9 && month > 9)
         return ("0"+day+"/"+month+"/"+year);
     else
-        return (+day+"/"+month+"/"+year);
+        return (+day+"/0"+month+"/"+year);
  
   }
   nextClicked = async ()=>{
@@ -89,7 +123,6 @@ class Calender extends React.Component {
     let curMonth = getDate.getMonth();
     await getDate.setMonth(curMonth + 1);
     await this.setState({date: getDate});
-    console.log("dateeeeee on clicke   "+await  this.state.date)
     await this.renderCalender(this.state.date)
     
   }
@@ -107,8 +140,11 @@ class Calender extends React.Component {
     this.renderCalender(this.state.date)
   }
 
-  render() {
-    
+  render() { 
+    let index= this.state.dateIndex;
+    let getDateMonth = this.state.date.getMonth()+1;
+    let getDateYear = this.state.date.getFullYear();
+    let dateToView = this.changeDateFotmat(this.state.dateIndex,getDateMonth,getDateYear)
     return (
       <div id='calender' className='container'>
           <div className='calender'>
@@ -140,6 +176,24 @@ class Calender extends React.Component {
 
             </div>
           </div>
+
+        <Modal 
+            isOpen={this.state.isModalOpen} 
+            toggle={e => this.toggleModal(this.state.dateIndex)}
+            className = 'mymodal justify-content-center'
+            overlayClassName = 'myoverlay'>
+                
+            <ModalHeader toggle={this.toggleModal}>
+               
+            </ModalHeader>
+            <ModalBody>
+                <div className="timeModalTitle">
+                    <h4>שעות פנויות לתאריך</h4>
+                    <h4>{this.state.dateIndex !== null &&  this.changeDateFotmat(this.state.dateIndex,getDateMonth,getDateYear).trim()}</h4>
+                </div>
+                <Content data={this.state.appointments} date={dateToView}/>
+            </ModalBody>
+        </Modal>
       </div>
     );
   }

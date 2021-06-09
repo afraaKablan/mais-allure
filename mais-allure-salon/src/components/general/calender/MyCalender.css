@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'ganFont';
+    src: local('ganFont'),
+         url("../../../fonts/gan/gan/ganclm_bold-webfont.ttf") format('truetype'),
+         url("../../../fonts/gan/gan/ganclm_bold-webfont.woff") format("woff");
+}
+
 *{
  margin: 0;
  padding: 0;
@@ -16,9 +23,10 @@
 }
 
 .calender{
-    width: 750px;
-    height: 832px;
+    width:620px;
+    height: auto;
     background-color:whitesmoke;
+    margin-top: 10%;
     box-shadow: 0 8px 48px rgba(0, 0, 0,0.4) ;
 }
 
@@ -59,7 +67,7 @@
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 1.5px;
-    width: calc(742px/7);
+    width: calc(642px/7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,13 +84,16 @@
 .days div{
     font-size: 24px;
     margin: 4.5px;
-    width: calc(668px/7);
+    width: calc(520px/7);
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-shadow: 1px 1px rgba(0, 0, 0,0.4) ;
     transition: background-color 0.2s;
+}
+.days a:hover{
+    cursor: pointer;
 }
 
 .days div:hover:not(.today){
@@ -99,3 +110,46 @@
 .today{
     background-color: rgb(99, 46, 99);
 }
+
+.exist{
+    font-weight: bolder;
+}
+
+.mymodal {
+    top: 20%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background: #fff;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    max-height: 500px ;
+    max-width: 780px;
+    padding: 0;
+    text-align: center;
+  }
+ 
+  .myoverlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+ 
+  .ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+  }
+ 
+  .ReactModal__Overlay--after-open {
+    opacity: 1;
+  }
+ 
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
+  }
+  .timeModalTitle h4{
+    font-family: ganFont,sans-serif;
+    color: salmon;
+  }

@@ -48,7 +48,18 @@ let GetAllAppointments = (numOfWeeks, status) =>{
     let DbRes = DB.DbQuery(DbQuery);
     return DbRes;
 }
-
+let GetAppointmentsDates = () =>{
+    let DbQuery =   " SELECT app.app_id, COUNT(app.app_id), DATE_FORMAT(app.date,'%d/%m/%Y') AS date"+
+                    " FROM appointments_tb AS app"+
+                    " INNER JOIN status_tb AS st"+
+                    "     ON st.statusID = app.status"+
+                    " WHERE st.status like 'פנוי'"+
+                    " AND app.date >= curdate()"+
+                    " GROUP BY app.date;";
+    let DbRes = DB.DbQuery(DbQuery);
+    return DbRes;
+   
+}
 let GetAppointments = (numOfWeeks, status, treatment) =>{
     let DbQuery =   " SELECT app.app_id,  DATE_FORMAT(app.date,'%d/%m/%Y') AS date, app.time, app.description , st.status, prod.prodName"+
                     " FROM `appointments_tb` AS app"+
@@ -64,7 +75,8 @@ let GetAppointments = (numOfWeeks, status, treatment) =>{
 }
 let Content = async (treatment) => {
     return ({
-        "Appointments" : await GetAppointments(3, 'פנוי', treatment)
+        "Appointments" : await GetAppointments(3, 'פנוי', treatment),
+        "AppDates" : await GetAppointmentsDates()
     });
 };
 

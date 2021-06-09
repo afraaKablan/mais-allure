@@ -14,24 +14,24 @@ class Appointment extends React.Component {
         };
     }
     componentDidMount() {
-        fetch(`/appointment?Treatment=`+ this.props.treat)
-            .then(res => res.json())
-            .then(json => this.setState({ data: json }));
+        // fetch(`/appointment?Treatment=`+ this.props.treat)
+        //     .then(res => res.json())
+        //     .then(json => this.setState({ data: json }));
     }
     
     render() {
-        console.log("appoint" + this.state.data)
+        console.log("appoint1111111 " + this.props.data)
         if (this.state.data.length == 0)
             return (<p> Ooops </p>)
        
         return ( 
         <div >
-            <Header data = { this.state.data.Nav}
+            {/* <Header data = { this.state.data.Nav}
                         logoFlag = '0'
-            />
-            <MyCalender/>
-            <Footer data={this.state.data.Footer.Social}
-                    contactData={this.state.data.Footer.ContactInfo[0]}/>
+            /> */}
+            <MyCalender date={this.props.data.Content}/>
+            {/* <Footer data={this.state.data.Footer.Social}
+                    contactData={this.state.data.Footer.ContactInfo[0]}/> */}
         </div>
         );
     }
