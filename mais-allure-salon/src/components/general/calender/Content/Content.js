@@ -20,6 +20,8 @@ class Content extends React.Component {
     console.log("apppp content "+appoints[0].date.toString().trim());
     console.log("dateeeeeee"+relDate.trim())
 
+    // Filter the appointment according to the recieved date (props.date) 
+    // and after that map throw the relevant items 
     const Appionments = appoints.
       filter(function(obj) {
         return (!(obj.date.toString().trim().localeCompare(relDate.trim())));
@@ -31,7 +33,7 @@ class Content extends React.Component {
                   <div className="line border border-top-0 col-3">{singleItem.description}</div>
                   <div className="line border border-top-0 col-3"><button>בחרי תור זה</button></div>
               </div>
-    );
+      );
 
     return (
       <div className="mb-5 content">    

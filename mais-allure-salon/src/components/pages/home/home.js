@@ -21,7 +21,8 @@ class Home extends React.Component {
     }
     
     render() {
-        console.log("Homeeee" + this.state.data)
+        console.log("Homeeee props app" + this.props.loggedInStatus)
+
         if (this.state.data.length == 0)
             return (<p> Ooops </p>)
         console.log("social"+this.state.data.Footer.Social[0])

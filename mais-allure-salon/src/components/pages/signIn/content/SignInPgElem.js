@@ -17,7 +17,12 @@ class SignInPgElem extends React.Component {
   render() {
     return (
       <div className='sign row'>
-        <FormSignIn formItems ={this.props.data.FormItems} formExtra = {this.props.data.FormExtra[0]} />
+        <FormSignIn 
+          formItems ={this.props.data.FormItems} 
+          formExtra = {this.props.data.FormExtra[0]}
+          handleSuccessfulAuth = {this.props.handleSuccessfulAuth}
+          // handleLogin = {this.props.handleLogin}  
+        />
         <SideDivWithBtn
           sideData = {this.props.data.SideData[0]}
           isBtnIn ='1'

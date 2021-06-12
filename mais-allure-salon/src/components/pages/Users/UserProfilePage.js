@@ -23,6 +23,7 @@ class UserProfilePage extends React.Component {
 
   render() {
     console.log(this.state.data)
+    console.log(this.props.loggedInStatus)
     if (this.state.data.length == 0)
         return (<p> Ooops </p>)
          

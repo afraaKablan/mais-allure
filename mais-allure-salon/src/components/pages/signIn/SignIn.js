@@ -11,12 +11,21 @@ class SignIn extends React.Component {
        this.state = {
         data: []
     };
+    this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
   }
+
   componentDidMount() {
     fetch(`/user/signIn`)
         .then(res => res.json())
         .then(json => this.setState({ data: json }));
   }
+
+  handleSuccessfulAuth(data){
+    console.log("Sign in data" + data.user[0].username)
+    this.props.handleLogin(data)
+    this.props.history.push("/profile")
+  }
+
   render() {
     console.log(this.state.data)
     if (this.state.data.length == 0)
@@ -26,7 +35,12 @@ class SignIn extends React.Component {
       <div id='signIn'>
         <Header data = { this.state.data.Nav }
                 logoFlag = '0' />
-        <SignInPgElem data ={this.state.data.Content} />
+
+        
+        <SignInPgElem data ={this.state.data.Content} 
+          handleSuccessfulAuth={this.handleSuccessfulAuth} 
+          // handleLogin = {this.handleLogin} 
+        />
         <Footer data={this.state.data.Footer.Social}
                   contactData={this.state.data.Footer.ContactInfo} />
       </div>

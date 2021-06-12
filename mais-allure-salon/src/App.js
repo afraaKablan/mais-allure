@@ -26,22 +26,62 @@ import BioAppoint from './components/pages/appointment/content/bioHandsAppointme
 import MyCalender from './components/general/calender/MyCalender'
 
 class App extends React.Component {
+  constructor(){
+    super();
+    this.state = {
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}
+    };
+
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin (data){
+    console.log(data.user)
+    // this.setState({
+    //   loggedInStatus: "LOGGED_IN",
+    //   user : data
+    // });    
+  }
+
   render() {
     return (
       <main>
           <Switch>
-              <Route path="/" component={Home} exact />
+              <Route 
+                path="/"  
+                exact
+                render = {props => (
+                  <Home {...props} loggedInStatus={this.state.loggedInStatus}/>
+                )} 
+              />
               <Route path="/contactUs" component={ContactUs} exact />
               <Route path="/about" component={AboutUs} exact />
               <Route path="/signUp" component={SignUp} exact />
-              <Route path="/signIn" component={SignIn} exact />
+              <Route 
+                path="/signIn" 
+                // component={SignIn} 
+                exact
+                render = {props => (
+                  <SignIn {...props} 
+                    handleLogin = {this.handleLogin} 
+                    loggedInStatus={this.state.loggedInStatus}/>
+                )} 
+               />
               {/* <Route path="/MyGallery" component={MyGallery} exact /> */}
               <Route path="/NailsGallery" component={NailsGallery} exact />
               <Route path="/FashionGallery" component={FashionGallery} exact />
               <Route path="/gallery" component={GalleryOptions} exact />
               {/* <Route path="/calender" component={Calender} exact /> */}
               <Route path="/products" component={Products} exact />
-              <Route path="/profile" component={UserProfilePage} exact />
+              <Route 
+                path="/profile" 
+                // component={UserProfilePage} 
+                exact
+                render = {props => (
+                  <UserProfilePage {...props} loggedInStatus={this.state.loggedInStatus}/>
+                )} 
+              />
               <Route path="/BioHands" component={BioAppoint} exact />
               <Route path="/Appointment" component={AppointmentsIndecies} exact />
               <Route path="/calender" component={MyCalender} exact />

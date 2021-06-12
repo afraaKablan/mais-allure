@@ -65,13 +65,20 @@ class Calender extends React.Component {
 
     const days = daysArray.map((i) =>{
         myFlag = 0;
-        this.props.data.AppDates.forEach(element => {
+        if (!this.props.AppDates)
+        {
+            this.props.data.AppDates.forEach(element => {
          
-            if (!(element.date.toString().trim().localeCompare(this.changeDateFotmat(i,getDateMonth,getDateYear).trim()))){
-                this.setState({dateIndex: element.app_id});
-                myFlag =1;  
-            }
-        });
+                if (!(element.date.toString().trim().localeCompare(this.changeDateFotmat(i,getDateMonth,getDateYear).trim()))){
+                    this.setState({dateIndex: element.app_id});
+                    myFlag =1;  
+                }
+            });
+        }
+        else{
+            alert('אין תורים פנוים להציע כרגע נא לפנות לטלפון 0506402951');
+        }
+
         //flag = 1 means that for spesific date there is open appointments hours 
         if (i === new Date().getDate() && getDate.getMonth() === new Date().getMonth() && (!myFlag)){
             return (<div className='today'>{i}</div>);
@@ -184,7 +191,6 @@ class Calender extends React.Component {
             overlayClassName = 'myoverlay'>
                 
             <ModalHeader toggle={this.toggleModal}>
-               
             </ModalHeader>
             <ModalBody>
                 <div className="timeModalTitle">

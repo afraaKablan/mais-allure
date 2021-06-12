@@ -9,6 +9,7 @@ class FormSignIn extends React.Component {
   constructor(props) {
        super(props);
        this.state = {
+         data: [],
          username: '',
          password:'',
          usernameERROR: '',
@@ -59,16 +60,20 @@ class FormSignIn extends React.Component {
         "password": this.state.password
       }
       //sending form data on button submition clicked 
-      const response = await fetch('/user/signInForm', {
+      await fetch('/user/signInForm', {
         method: 'POST',
         body: JSON.stringify({data}),
         headers: {
           'Content-Type' : 'application/json'
         }
-      });
-      const body = await response.text();
-      this.setState({ dataResponse: body });
-      console.log("responddd"+this.state.dataResponse);
+      })
+      .then(res => res.json())
+      .then(json => this.setState({ data: json }));
+
+      // const body = await response.text();
+      const body = this.state.data
+      this.setState({ dataResponse: body.msg });
+      console.log("respond body" + body.user);
 
       // clear form
       this.setState(this.setState({username: ''}));
@@ -77,6 +82,8 @@ class FormSignIn extends React.Component {
       this.setState(this.setState({passwordERROR: ''}));
       this.setState(this.setState({isSubmitBtnClicked: false}));
       this.component = '';
+      if (body.msg == 'OK')
+        this.props.handleSuccessfulAuth(this.state.data)
     }
   };
 
@@ -141,8 +148,7 @@ class FormSignIn extends React.Component {
             </div>
             <div className='form-inputs'>
                   <p>{this.state.dataResponse}</p>
-            </div>
-      
+            </div>      
             <p className='form-input-login p-3'>
                 <a href='#'>{this.props.formExtra.extra} </a>
             </p>

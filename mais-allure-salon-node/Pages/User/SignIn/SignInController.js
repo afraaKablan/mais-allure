@@ -11,10 +11,27 @@ let HandleUserData = async (user) =>{
     let query = await userDB.GetUserDetail('username',user.username);
     //this query should return one field so we can point to element 0 as our user
     if (query.length >0 ){
-        if (user.password != query[0].password )
-            return ("סיסמה לא נכונה! ");
+        if (user.password != query[0].password ){
+            // return ("סיסמה לא נכונה! ");
+            return ({
+                msg : "סיסמה לא נכונה! ",
+                status : "NOT_LOGGED_IN",
+                user: {
+                    username : user.username,
+                    password : user.password
+                }
+            });
+        }
         else
-            return ("ברוכה הבאה לדף הפרופיל שלך")
+            //return("OK")
+            return ({
+                msg : "OK",
+                status : "NOT_LOGGED_IN",
+                user: [{
+                    username : user.username,
+                    password : user.password
+                }]
+            });
             //redirect to profile page
     }
     else
@@ -28,7 +45,8 @@ let HandleUserData = async (user) =>{
 module.exports.SignInFormHandler = async (req, res) =>{
     console.log(req.body.data.username);
     let str = await HandleUserData(req.body.data);
-    res.send(str);
+    console.log(str);
+    res.json(str);
 }
 
 // This method send the Json of signIn page as respond
