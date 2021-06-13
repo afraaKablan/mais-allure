@@ -38,10 +38,10 @@ class App extends React.Component {
 
   handleLogin (data){
     console.log(data.user)
-    // this.setState({
-    //   loggedInStatus: "LOGGED_IN",
-    //   user : data
-    // });    
+    this.setState({
+      loggedInStatus: "LOGGED_IN",
+      user : data.user
+    });    
   }
 
   render() {
@@ -79,12 +79,46 @@ class App extends React.Component {
                 // component={UserProfilePage} 
                 exact
                 render = {props => (
-                  <UserProfilePage {...props} loggedInStatus={this.state.loggedInStatus}/>
+                  <UserProfilePage {...props} 
+                    loggedInStatus={this.state.loggedInStatus}
+                    user={this.state.user}
+                  />
                 )} 
               />
-              <Route path="/BioHands" component={BioAppoint} exact />
-              <Route path="/Appointment" component={AppointmentsIndecies} exact />
-              <Route path="/calender" component={MyCalender} exact />
+              <Route 
+                path="/BioHands" 
+                //component={BioAppoint} 
+                exact 
+                render = {props => (
+                  <BioAppoint {...props} 
+                    loggedInStatus={this.state.loggedInStatus}
+                    user={this.state.user}
+                  />
+                )} 
+              />
+              <Route 
+                path="/Appointment" 
+                // component={AppointmentsIndecies} 
+                exact
+                render = {props => (
+                  <AppointmentsIndecies {...props} 
+                    loggedInStatus={this.state.loggedInStatus}
+                    user = {this.state.user}
+                  />
+                )}  
+              />
+              {/* <Route 
+                path="/calender" 
+                // component={MyCalender} 
+                exact
+                render = {props => (
+                  <MyCalender {...props} 
+                    loggedInStatus = {this.state.loggedInStatus}
+                    user = {this.state.user}
+                  />
+                  
+                )}   
+              /> */}
 
               <Route component={Error}  />
           </Switch>

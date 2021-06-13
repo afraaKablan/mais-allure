@@ -26,7 +26,7 @@ class Home extends React.Component {
         if (this.state.data.length == 0)
             return (<p> Ooops </p>)
         console.log("social"+this.state.data.Footer.Social[0])
-        console.log("contact info"+this.state.data.Footer.ContactInfo.address) 
+        console.log("contact info"+this.state.data.Footer.ContactInfo[0].address) 
         
         return ( 
         <div id = 'home' >

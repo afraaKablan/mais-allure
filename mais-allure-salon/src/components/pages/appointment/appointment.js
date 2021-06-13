@@ -22,6 +22,9 @@ class Appointment extends React.Component {
     
     render() {
         console.log("appoint" + this.state.data)
+        console.log(this.props.loggedInStatus)
+        console.log(this.props.user)
+
         if (this.state.data.length == 0)
             return (<p> Ooops </p>)
        
@@ -30,7 +33,11 @@ class Appointment extends React.Component {
             <Header data = { this.state.data.Nav}
                         logoFlag = '0'
             />
-            <MyCalender data = { this.state.data.Content}/>
+            <MyCalender 
+                data = { this.state.data.Content}
+                loggedInStatus = {this.props.loggedInStatus}
+                user = {this.props.user}
+            />
             <Footer data={this.state.data.Footer.Social}
                     contactData={this.state.data.Footer.ContactInfo[0]}/>
         </div>

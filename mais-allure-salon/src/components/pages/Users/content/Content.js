@@ -5,7 +5,7 @@ import Footer from '../../../parts/footer/Footer.js'
 import {UploadImg} from './UploadImg'
 import Cart from '../../../general/Cart/Cart.js'
 import {ProductList} from '../../Products/content/ProductList'
-
+import SalonServices from '../../../general/SalonServices/SalonServices'
 import './Content.css'
 
 class Content extends React.Component {
@@ -35,7 +35,13 @@ class Content extends React.Component {
                   <i class="fas fa-shopping-cart"></i>
             </button>
         </div>
-          
+        
+
+        <div id="content" className="container-fluid mt-5 pb-5 mr-0 ml-0 pr-0 pl-0">
+            <div className='container pt-5'>
+              <SalonServices item={this.props.Services}  />
+            </div>
+        </div>
         
         
        

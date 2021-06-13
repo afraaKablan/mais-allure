@@ -22,8 +22,10 @@ class UserProfilePage extends React.Component {
   }
 
   render() {
-    console.log(this.state.data)
+    // console.log(this.state.data)
     console.log(this.props.loggedInStatus)
+    console.log("user from profile "+this.props.user[0].username)
+
     if (this.state.data.length == 0)
         return (<p> Ooops </p>)
          
@@ -31,7 +33,11 @@ class UserProfilePage extends React.Component {
       <div >
         <Header data = { this.state.data.Nav }
                 logoFlag = '0' />
-        <Content user={this.state.data.Content.Users[0]} products={this.state.data.Content.Products} />
+        <Content 
+          user = {this.state.data.Content.Users[0]} 
+          products = {this.state.data.Content.Products} 
+          Services = {this.state.data.Content.Services}
+        />
         <Footer data={this.state.data.Footer.Social}
                   contactData={this.state.data.Footer.ContactInfo} />
       </div>

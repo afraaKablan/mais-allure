@@ -70,6 +70,7 @@ class FormSignIn extends React.Component {
       .then(res => res.json())
       .then(json => this.setState({ data: json }));
 
+      //get respond from server
       // const body = await response.text();
       const body = this.state.data
       this.setState({ dataResponse: body.msg });

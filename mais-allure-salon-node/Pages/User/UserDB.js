@@ -22,6 +22,16 @@ module.exports.UpdateUserDetail = (user) =>{
     return DbRes;
 }
 
+// Apply updating users data in DB using UPDATE query
+module.exports.UpdateUserloggedInStatus = (user) =>{
+    let DbQuery =  " UPDATE `users_tb`"+ 
+                   " SET is_signedIn=true"+ 
+                   " WHERE username like '" + user.username + "'"          
+    let DbRes = DB.DbQuery(DbQuery);
+    return DbRes;
+}
+
+
 // Gets users details according to parameter field where it value equals to value
 module.exports.GetUserDetail = (field,value) =>{
     let DbQuery = "SELECT username,password,email"+

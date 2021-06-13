@@ -24,6 +24,7 @@ let HandleUserData = async (user) =>{
         }
         else
             //return("OK")
+            await userDB.UpdateUserloggedInStatus(user)
             return ({
                 msg : "OK",
                 status : "NOT_LOGGED_IN",

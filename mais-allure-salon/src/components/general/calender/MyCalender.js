@@ -148,6 +148,9 @@ class Calender extends React.Component {
   }
 
   render() { 
+    console.log(this.props.loggedInStatus)
+    // console.log(this.props.user[0])
+
     let index= this.state.dateIndex;
     let getDateMonth = this.state.date.getMonth()+1;
     let getDateYear = this.state.date.getFullYear();

@@ -6,7 +6,11 @@ class BioAppoint extends React.Component {
   render() {
     return (
       <div id='nailsGallery'>
-        <Appointment treat='bioHands'/>
+        <Appointment 
+          treat='bioHands'
+          loggedInStatus = {this.props.loggedInStatus}
+          user = {this.props.user}
+        />
      </div>
     );
   }
