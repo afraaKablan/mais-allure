@@ -24,7 +24,9 @@ class UserProfilePage extends React.Component {
   render() {
     // console.log(this.state.data)
     console.log(this.props.loggedInStatus)
-    console.log("user from profile "+this.props.user[0].username)
+    console.log("user from profile "+this.props.user.username)
+    // console.log(this.props.myProps)
+
 
     if (this.state.data.length == 0)
         return (<p> Ooops </p>)

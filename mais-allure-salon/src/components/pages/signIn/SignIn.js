@@ -23,7 +23,8 @@ class SignIn extends React.Component {
   handleSuccessfulAuth(data){
     console.log("Sign in data" + data.user[0].username)
     this.props.handleLogin(data)
-    this.props.history.push("/profile")
+    if (this.props.isHome == 'true')
+      this.props.history.push("/profile")
   }
 
   render() {

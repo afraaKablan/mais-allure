@@ -17,8 +17,16 @@
 .line{
     /* border: 2px solid rgb(153, 146, 146); */
     border-radius:5px;
-
 }
+
+.time:hover{
+    color: cornflowerblue;
+    font-weight: bolder;
+}
+.hide{
+    display: none;
+}
+
 button{
     width: 80%;
     margin-top: 5px;

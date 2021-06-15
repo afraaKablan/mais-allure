@@ -24,6 +24,7 @@ class Appointment extends React.Component {
         console.log("appoint" + this.state.data)
         console.log(this.props.loggedInStatus)
         console.log(this.props.user)
+        // console.log(this.props.username)
 
         if (this.state.data.length == 0)
             return (<p> Ooops </p>)
@@ -37,6 +38,7 @@ class Appointment extends React.Component {
                 data = { this.state.data.Content}
                 loggedInStatus = {this.props.loggedInStatus}
                 user = {this.props.user}
+                
             />
             <Footer data={this.state.data.Footer.Social}
                     contactData={this.state.data.Footer.ContactInfo[0]}/>

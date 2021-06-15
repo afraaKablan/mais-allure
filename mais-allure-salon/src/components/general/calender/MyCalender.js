@@ -150,6 +150,7 @@ class Calender extends React.Component {
   render() { 
     console.log(this.props.loggedInStatus)
     // console.log(this.props.user[0])
+    console.log(this.props.user)
 
     let index= this.state.dateIndex;
     let getDateMonth = this.state.date.getMonth()+1;
@@ -200,7 +201,12 @@ class Calender extends React.Component {
                     <h4>שעות פנויות לתאריך</h4>
                     <h4>{this.state.dateIndex !== null &&  this.changeDateFotmat(this.state.dateIndex,getDateMonth,getDateYear).trim()}</h4>
                 </div>
-                <Content data={this.state.appointments} date={dateToView}/>
+                <Content 
+                    data={this.state.appointments} 
+                    date={dateToView}
+                    loggedInStatus = {this.props.loggedInStatus}
+                    user = {this.props.user}
+                />
             </ModalBody>
         </Modal>
       </div>

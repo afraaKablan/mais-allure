@@ -14,6 +14,7 @@ class SignInPgElem extends React.Component {
   onBtnClicked(event) {
       this.setState({isBtnClicked: !this.state.isBtnClicked})
   }
+  
   render() {
     return (
       <div className='sign row'>
