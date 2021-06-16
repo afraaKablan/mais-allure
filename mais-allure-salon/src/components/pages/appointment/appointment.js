@@ -38,6 +38,7 @@ class Appointment extends React.Component {
                 data = { this.state.data.Content}
                 loggedInStatus = {this.props.loggedInStatus}
                 user = {this.props.user}
+                treat = {this.props.treat}
                 
             />
             <Footer data={this.state.data.Footer.Social}

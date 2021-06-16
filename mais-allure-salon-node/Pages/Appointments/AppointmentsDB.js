@@ -29,18 +29,21 @@ let GetAllAppointments = (numOfWeeks, status) =>{
     return DbRes;
 }
 
-let GetAppointmentsDates = () =>{
-    let DbQuery =   " SELECT app.app_id, COUNT(app.app_id), DATE_FORMAT(app.date,'%d/%m/%Y') AS date"+
+let GetAppointmentsDates = (treatment) =>{
+    let DbQuery =   " SELECT app.app_id, COUNT(app.app_id), DATE_FORMAT(app.date,'%d/%m/%Y') AS date" +
                     " FROM appointments_tb AS app"+
                     " INNER JOIN status_tb AS st"+
                     "     ON st.statusID = app.status"+
+                    " INNER JOIN products_tb AS prod"+
+                    "     ON prod.id = app.treatment_id"+
                     " WHERE st.status like 'פנוי'"+
+                    " AND prod.prodName like '"+treatment+"'"+
                     " AND app.date >= curdate()"+
-                    " GROUP BY app.date;";
+                    " GROUP BY app.date;"
     let DbRes = DB.DbQuery(DbQuery);
     return DbRes;
-   
 }
+
 
 let GetAppointments = (numOfWeeks, status, treatment) =>{
     let DbQuery =   " SELECT app.app_id,  DATE_FORMAT(app.date,'%d/%m/%Y') AS date, app.time, app.description , st.status, prod.prodName"+
@@ -66,9 +69,44 @@ let GetStatusID = (status) => {
 let Content = async (treatment) => {
     return ({
         "Appointments" : await GetAppointments(3, 'פנוי', treatment),
-        "AppDates" : await GetAppointmentsDates()
+        "AppDates" : await GetAppointmentsDates(treatment)
     });
 };
+//Get appointments for specific user in specific treatment
+module.exports.GetAppointmetForUsers = (username,treatment) => {
+    let DbQuery =   "SELECT UA.id ,user.username, prod.prodName, DATE_FORMAT(app.date,'%d/%m/%Y') AS date, app.time, sta.status"+
+                    " FROM `userappointment_tb` AS UA" +
+                    " INNER JOIN users_tb AS user"+
+                    "     ON user.userId = UA.user_id"+
+                    " INNER JOIN appointments_tb AS app"+
+                    "     ON app.app_id = UA.appointment_id"+
+                    " INNER JOIN products_tb AS prod"+
+                    "     ON prod.id = app.treatment_id"+
+                    " INNER JOIN status_tb AS sta"+
+                    "     ON sta.statusID = UA.status_id"+
+                    " WHERE user.username like 'afraa89'"+
+                    " AND prod.prodName like 'bioHands'"+
+                    " AND sta.status like 'ממתין'"
+    let DbRes = DB.DbQuery(DbQuery);
+    return DbRes;
+}
+
+//Get appointments for specific user in all treatmentns and status
+module.exports.GetAllAppointmetForUsers = (username) => {
+    let DbQuery =   "SELECT UA.id ,user.username, prod.prodName, DATE_FORMAT(app.date,'%d/%m/%Y') AS date, app.time,app.description, sta.status"+
+                    " FROM `userappointment_tb` AS UA"+
+                    " INNER JOIN users_tb AS user"+
+                    "     ON user.userId = UA.user_id"+
+                    " INNER JOIN appointments_tb AS app"+
+                    "     ON app.app_id = UA.appointment_id"+
+                    " INNER JOIN products_tb AS prod"+
+                    "     ON prod.id = app.treatment_id"+
+                    " INNER JOIN status_tb AS sta"+
+                    "     ON sta.statusID = UA.status_id"+
+                    " WHERE user.username like '"+ username +"';"
+    let DbRes = DB.DbQuery(DbQuery);
+    return DbRes;
+}
 
 module.exports.SetAppForUser = (userId, appId) =>{
     let DbQuery =   "INSERT INTO `userappointment_tb` (`id`, `user_id`, `appointment_id`, `price`, `discount_id`, `status_id`, `paymentDetails_id`, `date`) "+
@@ -86,7 +124,6 @@ module.exports.UpdateAppStatus = async (appId,status) =>{
     let DbRes = DB.DbQuery(DbQuery);
     return DbRes;
 }
-
 
 // GalleryPageJson function getting the parameter category sending 
 // from GallerController and return the json accordingly 

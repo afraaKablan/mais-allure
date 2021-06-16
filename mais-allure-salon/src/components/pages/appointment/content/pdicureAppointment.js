@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Appointment from '../appointment';
 
-class BioAppoint extends React.Component {
+class PdicureAppointment extends React.Component {
   render() {
     return (
-      <div id='nailsApp'>
+      <div id='pedicureApp'>
         <Appointment 
-          treat='bioHands'
+          treat='pedicure'
           loggedInStatus = {this.props.loggedInStatus}
           user = {this.props.user}
           username = {this.props.username}
@@ -17,4 +17,4 @@ class BioAppoint extends React.Component {
   }
 }
 
-export default BioAppoint;
+export default PdicureAppointment;

@@ -206,6 +206,7 @@ class Calender extends React.Component {
                     date={dateToView}
                     loggedInStatus = {this.props.loggedInStatus}
                     user = {this.props.user}
+                    treat = {this.props.treat}
                 />
             </ModalBody>
         </Modal>

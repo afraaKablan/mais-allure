@@ -23,6 +23,7 @@ import NailsGallery from './components/pages/gallery/content/NailsGallery'
 import FashionGallery from './components/pages/gallery/content/FashionGallery'
 import AppointmentsIndecies from './components/pages/appointment/content/AppointmentsIndecies'
 import BioAppoint from './components/pages/appointment/content/bioHandsAppointment'
+import PdicureAppointment from './components/pages/appointment/content/pdicureAppointment'
 // import MyCalender from './components/general/calender/MyCalender'
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
@@ -41,7 +42,8 @@ class App extends React.Component {
       user: {
               username: cookies.get('username') || 'Guest',
               password: cookies.get('password') || ''
-      }
+      },
+      appointmet: cookies.get('appointmentID') || ''
       // username: cookies.get('username') || 'Guest'
     };
 
@@ -67,7 +69,13 @@ class App extends React.Component {
       }
     });    
   }
-
+  // myCallback(a, b)
+  // {
+  // // Your code here
+  // // Parameters are purely optional.
+  // console.log(a);
+  // console.log(b);
+  // }
   componentDidMount(){
     // const { cookies } = this.props;
 
@@ -79,7 +87,11 @@ class App extends React.Component {
     const {loggedInStatus,user,username } = this.state;
 
     console.log("app state" + user);
-
+    // var intervalID = window.setInterval(this.myCallback, 10000, 'Parameter 1', 'Parameter 2');
+    // function stopTextColor() {
+    //   clearInterval(intervalID);
+    // }
+    
     return (
       <main>
           <Switch>
@@ -120,8 +132,10 @@ class App extends React.Component {
                 exact
                 render = {props => (
                   <UserProfilePage {...props} 
-                    loggedInStatus={this.state.loggedInStatus}
-                    user={this.state.user}
+                    loggedInStatus = {this.state.loggedInStatus}
+                    user = {this.state.user}
+                    appointmet = {this.state.appointmet}
+
                   />
                 )} 
               />
@@ -131,6 +145,18 @@ class App extends React.Component {
                 exact 
                 render = {props => (
                   <BioAppoint {...props} 
+                    handleLogin = {this.handleLogin} 
+                    loggedInStatus={this.state.loggedInStatus}
+                    user={this.state.user}
+                  />
+                )} 
+              />
+              <Route 
+                path="/pedicure" 
+                //component={BioAppoint} 
+                exact 
+                render = {props => (
+                  <PdicureAppointment {...props} 
                     handleLogin = {this.handleLogin} 
                     loggedInStatus={this.state.loggedInStatus}
                     user={this.state.user}

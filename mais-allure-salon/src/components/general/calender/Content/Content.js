@@ -34,7 +34,10 @@ class Content extends React.Component {
         isModalOpen: !this.state.isModalOpen
     });
   } 
-
+  //refresh current page to update changes
+  refreshPage(){
+    window.location.reload();
+  } 
   onDateClicked = async (id,date,time,desc) => {
     const { cookies } = this.props;
 
@@ -49,7 +52,8 @@ class Content extends React.Component {
       //sending data to DB 
       let data = {
         "username": this.state.user.username,
-        "appointmentID" : id
+        "appointmentID" : id,
+        "trear" : this.props.treat
       }
 
       // console.log("Body App for user "+body);
@@ -70,8 +74,9 @@ class Content extends React.Component {
         msg: this.state.data
       })
       alert(this.state.msg);
-
+      this.refreshPage();//refresh page to update appointments
     }
+
     else {
       this.toggleSignModal()  
     }

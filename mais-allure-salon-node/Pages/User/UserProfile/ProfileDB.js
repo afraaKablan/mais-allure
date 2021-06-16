@@ -5,6 +5,7 @@ const NavBar = require('../../../Parts/NavBar/NavBarDB');
 const Footer = require('../../../Parts/Footer/FooterDB');
 const productsJ = require('../../../Pages/Products/ProductsJ.json')
 const usersJ = require('../RegisteredUsers.json')
+const AppointDB = require('../../../Pages/Appointments/AppointmentsDB')
 const DB = require('../../../dataBase.js')
 
 
@@ -28,19 +29,20 @@ let ServiceslJson = () => {
     // return servicesJ;
 };
 
-
-let  Content= async () => {
-    return ({
-        "Users": UsersJson(),
-        "Products": ProductsJson(),
-        "Services" : await ServiceslJson()
-    });
+let  Content= async (username) => {
+    if(username)
+        return ({
+            "Users": UsersJson(),
+            "Products": ProductsJson(),
+            "Services" : await ServiceslJson(),
+            "Appointments" : await AppointDB.GetAllAppointmetForUsers(username)  
+        });
 };
 
-module.exports.ProfilePageJson = async (req, res) => {
+module.exports.ProfilePageJson = async (username) => {
     return ({
         "Nav":await NavBar.NavBarJson(),
-        "Content": await  Content(),
+        "Content": await  Content(username),
         "Footer" : await Footer.FooterJson()
     });
 }
