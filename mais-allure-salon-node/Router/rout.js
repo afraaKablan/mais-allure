@@ -8,6 +8,11 @@ const appoint = require('../Pages/Appointments/AppointmentsController.js')
 const contact = require('../Pages/ContactUs/ContactUsController.js')
 var user = require('../Pages/User/UserController.js')
 
+const bodyParser = require('body-parser');
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
+
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
         console.log('Time: ', Date.now())
@@ -21,7 +26,12 @@ router.get('/', function(req, res) {
 
 router.get('/home', home.HomePage)
 router.get('/gallery', gallery.GalleryPage)
-router.get('/appointment', appoint.AppountmentsPage)
+
+
+router.get('/appointment', appoint.AppointmentsPage)
+router.post('/appointmentUser', appoint.AppointmentHandler)
+
+
 router.get('/contact', contact.ContactUsPage)
 // router.post('/signInData', signIn)
 

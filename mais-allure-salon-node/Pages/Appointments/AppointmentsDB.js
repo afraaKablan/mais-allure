@@ -4,26 +4,6 @@ const DB = require('../../dataBase.js')
 const NavBar = require('../../Parts/NavBar/NavBarDB');
 const Footer = require('../../Parts/Footer/FooterDB');
 
-// Apply insertion to DB using INSERT query
-// module.exports.InsertUserDetails = (user) => {
-//     let DbQuery = "INSERT INTO `users_tb` (`userId`, `fname`, `lname`, `username`, `password`, `email`, `phoneNum`, `city_id`, `address`, `photo_id`)"+
-//                   " VALUES (NULL, NULL, NULL, '" + user.username + "',"+
-//                   " '" + user.password +"', '"+user.email +"', NULL, NULL, NULL, NULL);";
-//     let DbRes = DB.DbQuery(DbQuery);
-//     console.log("Query : "+ DbRes.toString());
-//     return DbRes;
-// };
-
-// // Apply updating users data in DB using UPDATE query
-// module.exports.UpdateUserDetail = (user) =>{
-//     let DbQuery = "UPDATE `users_tb` SET `fname`='" + user.fname +"',"+
-//                   " `lname`='" + user.lname +"',`phoneNum`='" + user.phoneNum +"',"+
-//                   " `city_id`='" + user.city_id +"',`address`='" + user.address +"' "+
-//                   " WHERE username like '" + user.username + "'";
-//     let DbRes = DB.DbQuery(DbQuery);
-//     return DbRes;
-// }
-
 let ServiceslJson = () => {
     let DbQuery = "SELECT ss.classItem,ss.classImg,ss.link,ss.classTitle,ss.title, it.id,it.alt,it.src"+
                   " FROM salonservices_tb AS ss"+
@@ -48,6 +28,7 @@ let GetAllAppointments = (numOfWeeks, status) =>{
     let DbRes = DB.DbQuery(DbQuery);
     return DbRes;
 }
+
 let GetAppointmentsDates = () =>{
     let DbQuery =   " SELECT app.app_id, COUNT(app.app_id), DATE_FORMAT(app.date,'%d/%m/%Y') AS date"+
                     " FROM appointments_tb AS app"+
@@ -60,6 +41,7 @@ let GetAppointmentsDates = () =>{
     return DbRes;
    
 }
+
 let GetAppointments = (numOfWeeks, status, treatment) =>{
     let DbQuery =   " SELECT app.app_id,  DATE_FORMAT(app.date,'%d/%m/%Y') AS date, app.time, app.description , st.status, prod.prodName"+
                     " FROM `appointments_tb` AS app"+
@@ -73,12 +55,38 @@ let GetAppointments = (numOfWeeks, status, treatment) =>{
     let DbRes = DB.DbQuery(DbQuery);
     return DbRes;
 }
+let GetStatusID = (status) => {
+    let DbQuery =   "SELECT statusID "+
+                    " FROM `status_tb`" +
+                    " WHERE status like '"+ status +"'";
+    let DbRes = DB.DbQuery(DbQuery);
+    return DbRes;
+}
+
 let Content = async (treatment) => {
     return ({
         "Appointments" : await GetAppointments(3, 'פנוי', treatment),
         "AppDates" : await GetAppointmentsDates()
     });
 };
+
+module.exports.SetAppForUser = (userId, appId) =>{
+    let DbQuery =   "INSERT INTO `userappointment_tb` (`id`, `user_id`, `appointment_id`, `price`, `discount_id`, `status_id`, `paymentDetails_id`, `date`) "+
+                    " VALUES (NULL, '" + userId + "', '" + appId + "', NULL,NULL, '2', '', '" + new Date() + "');";
+    let DbRes = DB.DbQuery(DbQuery);
+    return DbRes;
+}
+
+
+module.exports.UpdateAppStatus = async (appId,status) =>{
+    let statusID = await GetStatusID(status);
+    let DbQuery =   "UPDATE `appointments_tb`  "+
+                    " SET `status`='"+statusID[0].statusID+"'" +
+                    " WHERE app_id = '"+appId+"'";
+    let DbRes = DB.DbQuery(DbQuery);
+    return DbRes;
+}
+
 
 // GalleryPageJson function getting the parameter category sending 
 // from GallerController and return the json accordingly 

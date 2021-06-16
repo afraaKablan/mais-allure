@@ -21,7 +21,10 @@ class Content extends React.Component {
     this.state = {
       loggedInStatus: this.props.loggedInStatus,
       user: this.props.user,
-      isModalOpen: false
+      isModalOpen: false,
+      msg : '',
+      appoints : this.props.data,
+      data: []
     }
     this.handleLogin = this.handleLogin.bind(this);
   }
@@ -32,15 +35,42 @@ class Content extends React.Component {
     });
   } 
 
-  onDateClicked(id,date,time,desc){
+  onDateClicked = async (id,date,time,desc) => {
     const { cookies } = this.props;
 
-    console.log("id clicked "+id)
+    // console.log("id clicked "+id)
+
     if (this.state.loggedInStatus == 'LOGGED_IN'){
       console.log("user status " + this.state.loggedInStatus)
       console.log("user info "+this.state.user.username)
       cookies.set('appointmentID', id, { path: '/'  });
       alert("שלום רב "+this.state.user.username+", את כרגע עןמדת לקבוע תור לטיפול "+desc+" לתאריך "+date+" בשעה "+time+", התור ייכנס לתוקף רק אחרי שתקבלי אישור על קביעת התור מבעלת העסק, תודה על ההבנה ולהתראות")
+     
+      //sending data to DB 
+      let data = {
+        "username": this.state.user.username,
+        "appointmentID" : id
+      }
+
+      // console.log("Body App for user "+body);
+      console.log("Body App for user "+data);
+
+       //sending form data on button submition clicked 
+      await fetch('/appointmentUser', {
+        method: 'POST',
+        body: JSON.stringify({data}),
+        headers: {
+          'Content-Type' : 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(json => this.setState({ data: json }));
+      
+      this.setState({
+        msg: this.state.data
+      })
+      alert(this.state.msg);
+
     }
     else {
       this.toggleSignModal()  
@@ -66,7 +96,7 @@ class Content extends React.Component {
     if (this.props.data.length == 0)
         return (<p> Ooops </p>)   
     
-    let appoints = this.props.data; //Array of appointments
+    let appoints = this.state.appoints; //Array of appointments
     let relDate = this.props.date; //date from MyCalender
 
     console.log("apppp content "+appoints[0].date.toString().trim());

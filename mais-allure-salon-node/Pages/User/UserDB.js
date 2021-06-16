@@ -8,7 +8,7 @@ module.exports.InsertUserDetails = (user) => {
                   " VALUES (NULL, NULL, NULL, '" + user.username + "',"+
                   " '" + user.password +"', '"+user.email +"', NULL, NULL, NULL, NULL);";
     let DbRes = DB.DbQuery(DbQuery);
-    console.log("Query : "+ DbRes.toString());
+    // console.log("Query : "+ DbRes.toString());
     return DbRes;
 };
 
@@ -34,7 +34,7 @@ module.exports.UpdateUserDetail = (user) =>{
 
 // Gets users details according to parameter field where it value equals to value
 module.exports.GetUserDetail = (field,value) =>{
-    let DbQuery = "SELECT username,password,email"+
+    let DbQuery = "SELECT userId,username,password,email"+
                   " FROM `users_tb` "+
                   " WHERE "+field +" like '"+value+"';";
     let DbRes = DB.DbQuery(DbQuery);

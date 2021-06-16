@@ -13,7 +13,7 @@ let HandleUserData = async (user) =>{
     if (query.length >0 )
         return ('שם משתמש תפוס');
     else
-        userDB.InsertUserDetails(user);
+        await userDB.InsertUserDetails(user);
         return (`ברוכה הבאה  ${user.username} תהליך הרישום הסתיים בהצלחה נא לבצע כניסה`)
 }
 
