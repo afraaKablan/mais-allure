@@ -9,7 +9,6 @@ const contact = require('../Pages/ContactUs/ContactUsController.js')
 var user = require('../Pages/User/UserController.js')
 
 const bodyParser = require('body-parser');
-
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 

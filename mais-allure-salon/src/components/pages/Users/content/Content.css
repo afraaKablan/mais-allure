@@ -2,3 +2,18 @@
   margin-top: 100px;
   margin-right: 100px;
 }
+
+.Appline{
+  /* border: 2px solid rgb(204, 119, 176); */
+  border-style: outset;
+}
+
+#appointments{
+  margin-right: 110px;
+  display: none;
+}
+.click:hover {
+  color: rgb(122, 45, 90);
+  font-weight: bolder;
+  cursor: pointer;
+}

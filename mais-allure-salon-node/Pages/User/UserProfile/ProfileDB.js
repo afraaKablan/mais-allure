@@ -3,19 +3,10 @@ const express = require('express')
 const router = express.Router()
 const NavBar = require('../../../Parts/NavBar/NavBarDB');
 const Footer = require('../../../Parts/Footer/FooterDB');
-const productsJ = require('../../../Pages/Products/ProductsJ.json')
-const usersJ = require('../RegisteredUsers.json')
 const AppointDB = require('../../../Pages/Appointments/AppointmentsDB')
 const DB = require('../../../dataBase.js')
+const userDB = require ("../UserDB")
 
-
-let UsersJson = () => {
-    return usersJ;
-};
-
-let ProductsJson = () => {
-    return productsJ;
-};
 
 
 let ServiceslJson = () => {
@@ -32,8 +23,7 @@ let ServiceslJson = () => {
 let  Content= async (username) => {
     if(username)
         return ({
-            "Users": UsersJson(),
-            "Products": ProductsJson(),
+            "Users": await userDB.GetUserDetailByUsername(username),
             "Services" : await ServiceslJson(),
             "Appointments" : await AppointDB.GetAllAppointmetForUsers(username)  
         });

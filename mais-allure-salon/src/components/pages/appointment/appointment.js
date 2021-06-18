@@ -14,6 +14,7 @@ class Appointment extends React.Component {
             data: []
         };
     }
+    
     componentDidMount() {
         fetch(`/appointment?Treatment=`+ this.props.treat)
             .then(res => res.json())

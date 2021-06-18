@@ -41,3 +41,14 @@ module.exports.GetUserDetail = (field,value) =>{
     return DbRes;
 }
 
+//Gets all users data according to username
+module.exports.GetUserDetailByUsername = (username) =>{
+    let DbQuery =   "SELECT us.*, img.src as imgSrc "+
+                    " FROM `users_tb` AS us" +
+                    " INNER JOIN images_tb AS img"+
+                    "     ON img.id = us.photo_id"+
+                    " WHERE us.username like '"+ username +"';"
+    let DbRes = DB.DbQuery(DbQuery);
+    return DbRes;
+}
+

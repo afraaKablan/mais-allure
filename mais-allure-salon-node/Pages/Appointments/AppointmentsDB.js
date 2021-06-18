@@ -84,8 +84,8 @@ module.exports.GetAppointmetForUsers = (username,treatment) => {
                     "     ON prod.id = app.treatment_id"+
                     " INNER JOIN status_tb AS sta"+
                     "     ON sta.statusID = UA.status_id"+
-                    " WHERE user.username like 'afraa89'"+
-                    " AND prod.prodName like 'bioHands'"+
+                    " WHERE user.username like '"+username+"'"+
+                    " AND prod.prodName like '"+treatment+"'"+
                     " AND sta.status like 'ממתין'"
     let DbRes = DB.DbQuery(DbQuery);
     return DbRes;
@@ -108,6 +108,14 @@ module.exports.GetAllAppointmetForUsers = (username) => {
     return DbRes;
 }
 
+// //Get appointments for specific user in all treatmentns and status
+// module.exports.GetUsersAppointmentsIn24Hours = () => {
+//     let DbQuery =   "";
+//     let DbRes = DB.DbQuery(DbQuery);
+//     return DbRes;
+// }
+
+
 module.exports.SetAppForUser = (userId, appId) =>{
     let DbQuery =   "INSERT INTO `userappointment_tb` (`id`, `user_id`, `appointment_id`, `price`, `discount_id`, `status_id`, `paymentDetails_id`, `date`) "+
                     " VALUES (NULL, '" + userId + "', '" + appId + "', NULL,NULL, '2', '', '" + new Date() + "');";
@@ -115,9 +123,21 @@ module.exports.SetAppForUser = (userId, appId) =>{
     return DbRes;
 }
 
+module.exports.UpdateAppForUserStatus = async(userId, appId,status) =>{
+    let statusID = await GetStatusID(status);
+    let DbQuery =   "UPDATE userappointment_tb AS UA "+
+                    " SET UA.status_id = " + statusID[0].statusID
+                    " WHERE UA.user_id = "+ userId
+                    " AND UA.appointment_id = "+ appId +";"
+    let DbRes = DB.DbQuery(DbQuery);
+    return DbRes;
+}
 
 module.exports.UpdateAppStatus = async (appId,status) =>{
     let statusID = await GetStatusID(status);
+    console.log("satatus and id "+ status,statusID[0].statusID)
+    console.log("APPPP id "+ appId)
+
     let DbQuery =   "UPDATE `appointments_tb`  "+
                     " SET `status`='"+statusID[0].statusID+"'" +
                     " WHERE app_id = '"+appId+"'";

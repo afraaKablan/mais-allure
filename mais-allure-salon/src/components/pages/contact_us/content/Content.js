@@ -4,12 +4,12 @@ import './Content.css';
 
 class Content extends React.Component {
   render() {
-    const formItems = this.props.data.map((singleItem) =>
-      singleItem.type 
-    );
+    // const formItems = this.props.data.map((singleItem) =>
+    //   singleItem.type 
+    // );
 
     return (
-      <div id="content" class="container mt-5">
+      <div id="content" class="container mt-5 pt-5">
         <div id="inner" class="row bg-light">
           <div id="formMsg" class="col-12 col-md-6 ml-3">
             <div class="formMsgContent shadow p-5 justify-content-center">
@@ -119,14 +119,14 @@ class Content extends React.Component {
                 <div class="mapouter">
                   <div class="gmap_canvas">
                     <iframe
-                       width="600"
-                       height="500"
-                       id="gmap_canvas"
-                       src="https://maps.google.com/maps?q=sonol%20station%20beit%20jann&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                       frameborder="0"
-                       scrolling="no"
-                       marginheight="0"
-                       marginwidth="0">
+                       width = "600"
+                       height = "500"
+                       id = "gmap_canvas"
+                       src = "https://maps.google.com/maps?q=sonol%20station%20beit%20jann&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                       frameborder = "0"
+                       scrolling = "no"
+                       marginheight = "0"
+                       marginwidth = "0">
                      </iframe>
                      <a href="https://yggtorrent-fr.com"></a><br/>
                     <a href="https://google-map-generator.com">map generator</a>

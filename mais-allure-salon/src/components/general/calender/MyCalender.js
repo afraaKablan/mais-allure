@@ -157,7 +157,7 @@ class Calender extends React.Component {
     let getDateYear = this.state.date.getFullYear();
     let dateToView = this.changeDateFotmat(this.state.dateIndex,getDateMonth,getDateYear)
     return (
-      <div id='calender' className='container'>
+      <div id='calender' className='Callcontainer'>
           <div className='calender'>
             <div className='month'>
                 <i className='fas fa-angle-right next' 

@@ -20,7 +20,7 @@ class ContactUs extends React.Component {
 
   render() {
     console.log(this.state.data)
-    if (this.state.data.length == 0){
+    if (this.state.data.length === 0){
         return (<p> Error </p>)
       }
     return (
@@ -30,7 +30,7 @@ class ContactUs extends React.Component {
         />
         <Content />
         <Footer data={this.state.data.Footer.Social}
-                contactData={this.state.data.Footer.ContactInfo}/>
+                contactData={this.state.data.Footer.ContactInfo[0]}/>
       </div>
     );
   }

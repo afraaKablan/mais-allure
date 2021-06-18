@@ -43,7 +43,7 @@ class App extends React.Component {
               username: cookies.get('username') || 'Guest',
               password: cookies.get('password') || ''
       },
-      appointmet: cookies.get('appointmentID') || ''
+      appointmetID: cookies.get('appointmentID') || ''
       // username: cookies.get('username') || 'Guest'
     };
 
@@ -57,7 +57,7 @@ class App extends React.Component {
     // console.log("dateeeeeee "+d)
     cookies.set('username', data.user[0].username, { path: '/'  });
     cookies.set('password', data.user[0].password, { path: '/'  });
-    cookies.set('Loggedinstatus','LOGGED_IN')
+    cookies.set('Loggedinstatus','LOGGED_IN', { path: '/'  });
 
     // this.setState({ username: cookies.get('username') });
     // console.log(data.user)
@@ -69,26 +69,46 @@ class App extends React.Component {
       }
     });    
   }
-  // myCallback(a, b)
-  // {
-  // // Your code here
-  // // Parameters are purely optional.
-  // console.log(a);
-  // console.log(b);
-  // }
+
+  //Call back for time intervall
+  myCallback (){
+  //gets all the app users from DB 
+  //send notification for users who has app in 24 hours from current time
+    //sending data to DB 
+    // let data = {
+    //   "username": this.props.user.username,
+    //   "appointmentID" : this.props.appointmetID,
+    // }
+      //sending form data on button submition clicked 
+    // fetch('/appointmentUser?Action=timeInterval' , {
+    //   method: 'POST',
+    //   body: JSON.stringify({data}),
+    //   headers: {
+    //     'Content-Type' : 'application/json'
+    //   }
+    // })
+    // .then(res => res.json())
+    // .then(json => this.setState({ data: json }));
+
+    // alert( JSON.stringify(this.state.data))
+  }
   componentDidMount(){
     // const { cookies } = this.props;
 
     // cookies.remove('username');
     // cookies.remove('password');
     // cookies.remove('Loggedinstatus');
+    // cookies.remove('appointmentID');
   }
   render() {
-    const {loggedInStatus,user,username } = this.state;
+    // const {loggedInStatus,user,username } = this.state;
 
-    console.log("app state" + user);
-    // var intervalID = window.setInterval(this.myCallback, 10000, 'Parameter 1', 'Parameter 2');
-    // function stopTextColor() {
+    // console.log("app state" + user);
+
+    // Time interval that calls mycallback each 24 hours 
+    // var intervalID = window.setInterval(this.myCallback, 24*60*60*1000 );
+  
+    // function stopinterval() {
     //   clearInterval(intervalID);
     // }
     
@@ -134,8 +154,7 @@ class App extends React.Component {
                   <UserProfilePage {...props} 
                     loggedInStatus = {this.state.loggedInStatus}
                     user = {this.state.user}
-                    appointmet = {this.state.appointmet}
-
+                    appointmetID = {this.state.appointmetID}
                   />
                 )} 
               />

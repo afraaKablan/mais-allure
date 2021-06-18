@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import Header from '../../parts/header/Header.js'
 import Footer from '../../parts/footer/Footer.js'
 import Content from './content/Content'
-import {RegisterUsers} from './RegisterUsers'
-import {ProductList} from '../Products/content/ProductList'
+// import {RegisterUsers} from './RegisterUsers'
+// import {ProductList} from '../Products/content/ProductList'
 import './UserProfilePage.css';
 
 class UserProfilePage extends React.Component {
@@ -26,7 +26,7 @@ class UserProfilePage extends React.Component {
     // console.log(this.state.data)
     console.log(this.props.loggedInStatus)
     console.log("user from profile " + this.props.user.username)
-    console.log("appointID from profile " + this.props.appointmet)
+    console.log("appointID from profile " + this.props.appointmetID)
 
     // console.log(this.props.myProps)
 
@@ -43,6 +43,7 @@ class UserProfilePage extends React.Component {
           products = {this.state.data.Content.Products} 
           Services = {this.state.data.Content.Services}
           Appointments = {this.state.data.Content.Appointments}
+          appointmetID = {this.props.appointmetID}
         />
         <Footer data={this.state.data.Footer.Social}
                   contactData={this.state.data.Footer.ContactInfo[0]} />

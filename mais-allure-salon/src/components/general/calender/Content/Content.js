@@ -38,22 +38,23 @@ class Content extends React.Component {
   refreshPage(){
     window.location.reload();
   } 
-  onDateClicked = async (id,date,time,desc) => {
+  onDateClicked = async (id,date,time,desc,treat) => {
     const { cookies } = this.props;
 
     // console.log("id clicked "+id)
 
-    if (this.state.loggedInStatus == 'LOGGED_IN'){
+    if (this.state.loggedInStatus === 'LOGGED_IN'){
       console.log("user status " + this.state.loggedInStatus)
       console.log("user info "+this.state.user.username)
-      cookies.set('appointmentID', id, { path: '/'  });
-      alert("שלום רב "+this.state.user.username+", את כרגע עןמדת לקבוע תור לטיפול "+desc+" לתאריך "+date+" בשעה "+time+", התור ייכנס לתוקף רק אחרי שתקבלי אישור על קביעת התור מבעלת העסק, תודה על ההבנה ולהתראות")
-     
+      
+      alert("שלום רב "+this.state.user.username+", את כרגע עומדת לקבוע תור לטיפול "+desc+" לתאריך "+date+" בשעה "+time+", התור ייכנס לתוקף רק אחרי שתקבלי אישור על קביעת התור מבעלת העסק, תודה על ההבנה ולהתראות")
+      console.log("treat from cal "+ treat)
+
       //sending data to DB 
       let data = {
         "username": this.state.user.username,
         "appointmentID" : id,
-        "trear" : this.props.treat
+        "treat" : treat
       }
 
       // console.log("Body App for user "+body);
@@ -71,9 +72,11 @@ class Content extends React.Component {
       .then(json => this.setState({ data: json }));
       
       this.setState({
-        msg: this.state.data
+        msg: this.state.data.msg
       })
       alert(this.state.msg);
+      if (this.state.data.isOk)
+        cookies.set('appointmentID', id, { path: '/'  });
       this.refreshPage();//refresh page to update appointments
     }
 
@@ -98,14 +101,12 @@ class Content extends React.Component {
     });
   }
   render() {
-    if (this.props.data.length == 0)
+
+    if (this.props.data.length === 0)
         return (<p> Ooops </p>)   
     
     let appoints = this.state.appoints; //Array of appointments
     let relDate = this.props.date; //date from MyCalender
-
-    console.log("apppp content "+appoints[0].date.toString().trim());
-    console.log("dateeeeeee"+relDate.trim())
 
     // Filter the appointment according to the recieved date (props.date) 
     // and after that map throw the relevant items 
@@ -117,7 +118,11 @@ class Content extends React.Component {
               <div className=" row">
                   <div className="hide">{singleItem.app_id}</div>
                   <div className="line date border border-top-0 col-4" >{singleItem.date}</div>
-                  <div className="line time border border-top-0 col-4" onClick={e=>this.onDateClicked(singleItem.app_id,singleItem.date,singleItem.time, singleItem.description)} >{singleItem.time}</div>
+                  <div className="line time border border-top-0 col-4" 
+                       onClick={e=>
+                          this.onDateClicked(singleItem.app_id,singleItem.date,singleItem.time, singleItem.description,this.props.treat)} >
+                      {singleItem.time}
+                  </div>
                   <div className="line desc border border-top-0 col-4">{singleItem.description}</div>
                   {/* <div className="line border border-top-0 col-3"><button>בחרי תור זה</button></div> */}
               </div>
