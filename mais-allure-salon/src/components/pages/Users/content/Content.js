@@ -72,6 +72,7 @@ class Content extends React.Component {
   }
 
   render() {
+    console.log("useeeeeeer "+this.props.user.username)
     let Appointments = this.props.Appointments.map((singleItem)=>
       <div className=" row">
           <div className="hide">{singleItem.id}</div>
@@ -93,8 +94,13 @@ class Content extends React.Component {
     );
     return (
       <div className='containerProfile container-fluid'>
+        <div className='mt-5 '>
+          <p>התנתק</p>
+        </div>
         <div className='col-12'>
-          <UploadImg src={this.props.user.imgSrc} />
+          <UploadImg src={this.props.user.imgSrc} 
+                     username={this.props.user.username}
+          />
         </div>
         
   

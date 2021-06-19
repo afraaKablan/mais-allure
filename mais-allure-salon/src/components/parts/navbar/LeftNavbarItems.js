@@ -6,13 +6,14 @@ import NavbarItem from './NavbarItem'
 class LeftNavbarItems extends React.Component {
     constructor(props) {
         super(props);
-
     }
-
+  
     render() {
+
         const leftmenuItems = this.props.data.map((singleItem) =>
             <NavbarItem 
                 item = { singleItem }
+                user={this.props.user}
             />
         );
 

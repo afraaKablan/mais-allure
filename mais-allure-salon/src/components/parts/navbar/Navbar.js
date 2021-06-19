@@ -22,7 +22,9 @@ class Navbar extends React.Component {
               <div className = "collapse navbar-collapse"
               id = "collapsibleNavbar" >
               <RightNavbarItems data = { this.props.data.NavRight } dropDown_items={this.props.data.DropDownItems}/> 
-              <LeftNavbarItems data = { this.props.data.NavLeft }/> 
+              <LeftNavbarItems data = { this.props.data.NavLeft }
+                               user={this.props.user}
+              /> 
               </div> 
             </nav> 
           </div>

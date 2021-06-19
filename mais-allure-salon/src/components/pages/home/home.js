@@ -35,7 +35,9 @@ class Home extends React.Component {
                     withMyPic = '1'
                     withLogo = '1'
                     logoId = 'logoImage'
-                    logoClass = 'container-fluid'/>
+                    logoClass = 'container-fluid'
+                    user={this.props.user.username}
+            />
             <Content data = { this.state.data.Content }/>
             <Footer data={this.state.data.Footer.Social}
                     contactData={this.state.data.Footer.ContactInfo[0]}/>

@@ -16,6 +16,12 @@ export function UploadImg(props) {
           current.src = e.target.result;
       }
       reader.readAsDataURL(file);
+      console.log("img Fileee " + current.src)
+      console.log(props.username)
+      // fetch(`/updateProfileImg?ImgSrc=` + current.src +`&user=` + props.username)
+      //  .then(res => res.json())
+      //  .then(json => this.setState({ data: json }));
+      
     }
   };
 

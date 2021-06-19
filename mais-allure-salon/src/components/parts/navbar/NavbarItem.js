@@ -15,7 +15,7 @@ class NavbarItem extends React.Component {
                       );
     }
     return(
-      //normal right menu item
+      //normal menu item
      (this.props.item.isDrop == 0)?
         (
           <li className={this.props.item.cItem}>

@@ -13,5 +13,6 @@ router.get('/signUp', signUp.SignUpJson);
 router.post('/signUpForm', signUp.SignUpFormHandler);
 router.post('/signInForm', signIn.SignInFormHandler);
 router.get('/profile', profile.ProfileJson);
+// router.get('/updateProfileImg', profile.ProfileUpdateImg);
 
 module.exports = router

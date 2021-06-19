@@ -36,3 +36,8 @@ module.exports.ProfilePageJson = async (username) => {
         "Footer" : await Footer.FooterJson()
     });
 }
+
+// module.exports.ProfileUpdateImg = async (username, imgSrc)=>{
+//     //update img
+//     return ('OK')
+// }
