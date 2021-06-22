@@ -1,6 +1,6 @@
 .containerProfile{
   margin-top: 100px;
-  margin-right: 100px;
+  /* margin-right: 100px; */
 }
 
 .Appline{
@@ -9,7 +9,7 @@
 }
 
 #appointments{
-  margin-right: 110px;
+  
   display: none;
 }
 .click:hover {

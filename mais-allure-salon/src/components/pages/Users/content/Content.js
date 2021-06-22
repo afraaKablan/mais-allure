@@ -7,17 +7,20 @@ import './Content.css'
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { Modal, ModalHeader, ModalBody} from 'reactstrap';
-
+// import { slide as Menu } from 'react-burger-menu'
 
 class Content extends React.Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
   };
+
+  static appLength = 0;
+
   constructor(props){
     super(props);
     this.state = {
       data: [],
-      isModalOpen: false
+      isModalOpen: false,
     }
   }
 
@@ -33,7 +36,7 @@ class Content extends React.Component {
   
   onDeleteClicked = async (action,date,time,desc) => {
     const { cookies } = this.props;
-    alert("שלום רב "+ this.props.user.username+", את כרגע עומדת לשנות תור לטיפול "+desc+" שנקבע לתאריך "+date+" בשעה "+time+", התור ייכנס לתוקף רק אחרי שתקבלי אישור על קביעת התור מבעלת העסק, תודה על ההבנה ולהתראות")
+    alert("שלום רב "+ this.props.user.username+", את כרגע עומדת לבטל תור לטיפול "+desc+" שנקבע לתאריך "+date+" בשעה "+time+"")
     
     //sending data to DB 
     let data = {
@@ -71,13 +74,28 @@ class Content extends React.Component {
     }
   }
 
+  refreshPage(){
+    window.location.reload();
+  } 
+
+  userSignOut = () => {
+    const { cookies } = this.props;
+
+    cookies.remove('username');
+    cookies.remove('password');
+    cookies.remove('Loggedinstatus');
+    cookies.remove('appointmentID');
+
+    this.refreshPage();
+  }
+ 
   render() {
     console.log("useeeeeeer "+this.props.user.username)
     let Appointments = this.props.Appointments.map((singleItem)=>
       <div className=" row">
           <div className="hide">{singleItem.id}</div>
           <div className="Appline date1 col-2" >{singleItem.date}</div>
-          <div className="Appline time1 col-2 click" >{singleItem.time}</div>
+          <div className="Appline time1 col-2 " >{singleItem.time}</div>
           <div className="Appline desc1 col-3">{singleItem.description}</div>
           <div className="Appline status1 col-2">{singleItem.status}</div>
           <div className="Appline click" 
@@ -90,38 +108,56 @@ class Content extends React.Component {
                 this.onUpdateClicked()} >
               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </div>
+           
       </div>
     );
-    return (
-      <div className='containerProfile container-fluid'>
-        <div className='mt-5 '>
-          <p>התנתק</p>
+    this.appLength = Appointments.length;
+    console.log("app length "+this.appLength)
+    if(Appointments.length == 0){
+        Appointments = <div> 
+          <h3>          לא קיימים תורים להצגה</h3>
+          {/* <h2>את מוזמנת לבחור שירות לקביעת תור</h2> */}
+          <div >
+            <SalonServices item={this.props.Services}  />
+          </div>
         </div>
+    }
+    return (
+    
+      <div className='containerProfile container-fluid text-center'>
+  
         <div className='col-12'>
           <UploadImg src={this.props.user.imgSrc} 
                      username={this.props.user.username}
           />
         </div>
-        
+        <div className='mt-2'>
+          <h2 className='profileTitle'>{this.props.user.fname}  {this.props.user.lname}</h2>
+          <p>{this.props.user.username}</p>
+        </div>
   
         <div className="btnContainer">
-            <button className = "plus-btn btn"
+          {/* appointments btn */}
+            <button className = "appointBtn btn"
                   type = "button"
                   name = "button"
                   onClick = {() => this.ShowAndHideAppointments() }>
               <i class="fa fa-thumb-tack" aria-hidden="true"></i>            
             </button>
+
+            {/* signOut btn */}
+            <button className='signOutBtn btn'
+                    onClick = {() => this.userSignOut() }
+            >
+              <i class="fas fa-sign-out-alt"></i>
+            </button>
         </div>
   
-        {/*         
-        <div className="raw mt-5 pb-5 mr-0 ml-0 pr-0 pl-0">
-            <div className='col-12 pt-5'>
-              <SalonServices item={this.props.Services}  />
-            </div>
-        </div> */}
 
-        <div id='appointments' className='container mt-5 bt-5' >
-          {Appointments}
+        <div id='appointments' className='container-fluid mt-5 mr-5 bt-5 text-center' >
+          <table id="customers">
+            {Appointments}
+          </table>
         </div>
       
         <Modal 

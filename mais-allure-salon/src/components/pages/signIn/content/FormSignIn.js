@@ -12,8 +12,10 @@ class FormSignIn extends React.Component {
          data: [],
          username: '',
          password:'',
-         usernameERROR: '',
-         passwordERROR: '',
+         Errors: {
+          "usernameERROR": '',
+          "passwordERROR": '',
+         },
          isSubmitBtnClicked: false,
        };
        this.handleSubmit = this.handleSubmit.bind(this);
@@ -89,9 +91,6 @@ class FormSignIn extends React.Component {
   };
   
 
-  OnUserNameChange =async event =>{
-        this.setState({ username: event.target.value });
-  }
   render() {
       const formItems = this.props.formItems.map((singleItem) =>
         <FormItem item = {singleItem}/>

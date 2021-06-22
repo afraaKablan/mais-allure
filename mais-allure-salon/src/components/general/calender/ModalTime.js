@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Nav, NavItem, NavLink, Card, CardImg, CardText,
   CardBody, CardTitle, CardSubtitle, FormGroup, Input, Col, Button, Modal, ModalHeader, ModalBody} from 'reactstrap';
 import Content from './Content/Content'
-import Modal from 'react-modal'
+// import Modal from 'react-modal'
 
 class ModalTime extends Component {
     constructor(props){

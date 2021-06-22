@@ -23,7 +23,7 @@ class GalleryIndex extends React.Component {
     );
     return (
     <div>
-      <div className='myGallery row mt-5 mr-5 text-center'>
+      <div className='myGallery row mt-5 text-center'>
         {categories}
       </div>
     </div>

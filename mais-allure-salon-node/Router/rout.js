@@ -7,6 +7,7 @@ const gallery = require('../Pages/Gallery/GalleryController.js')
 const appoint = require('../Pages/Appointments/AppointmentsController.js')
 const contact = require('../Pages/ContactUs/ContactUsController.js')
 var user = require('../Pages/User/UserController.js')
+const service = require('../Pages/ServiceInfo/ServiceInfoController.js')
 
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
@@ -25,6 +26,7 @@ router.get('/', function(req, res) {
 
 router.get('/home', home.HomePage)
 router.get('/gallery', gallery.GalleryPage)
+router.get('/serviceInfo', service.ServiceInfoPage)
 
 
 router.get('/appointment', appoint.AppointmentsPage)

@@ -10,7 +10,13 @@ class SalonServices extends React.Component {
   
   render() {
     return (
-      <SalonItems items={this.props.item} />
+      <div>
+        
+        <div className="text-center mb-5">
+          <h3 className='modal-title'>לחצי על השירות המבוקש לקביעת תור</h3>
+        </div>
+        <SalonItems items={this.props.item} />
+      </div>
     );
   }
 }

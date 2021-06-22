@@ -5,7 +5,7 @@
   justify-content: center;
 }
 .containerImg{
-  margin-left: 20%;
+  /* margin-left: 10%; */
   height: 260px;
   width: 260px;
   /* border: 5px solid #555; */
@@ -18,7 +18,7 @@
 }
 
 .changeImg {
-  margin-left: 20%;
+  /* margin-left: 20%; */
   display: none;
 }
     

@@ -4,19 +4,19 @@ import { Modal, ModalHeader, ModalBody} from 'reactstrap';
 import Content from './Content/Content'
 
 class Calender extends React.Component {
-    months = ["January",
-                    "February",
-                    "March",
-                    "April",
-                    "May",
-                    "June",
-                    "July",
-                    "August",
-                    "September",
-                    "October",
-                    "November",
-                    "December",
-                ];    
+    months = ["ינואר",
+                "פברואר",
+                "מרץ",
+                "אפריל",
+                "מאי",
+                "יוני",
+                "יולי",
+                "אוגוסט",
+                "ספטמבר",
+                "אוקטובר",
+                "נובמבר",
+                "דצמבר",
+            ];    
   constructor(props){
     super(props);
     this.state = {
@@ -116,6 +116,7 @@ class Calender extends React.Component {
     });
     this.setState({nextD: nextD })
   }
+
   changeDateFotmat = (day,month,year) =>{
     if (day >= 1 && day <= 9 && month >= 1 && month <= 9)
         return ("0"+day+"/0"+month+"/"+year);
@@ -137,7 +138,6 @@ class Calender extends React.Component {
     let getDate = this.state.date;
     let curMonth = getDate.getMonth();
     await getDate.setMonth(curMonth - 1);
-
     await this.setState({date: getDate});
     await this.renderCalender(this.state.date)
 
@@ -172,13 +172,13 @@ class Calender extends React.Component {
                 </i>
             </div>
             <div className='weekdays'>
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
+                <div>ראשון</div>
+                <div>שני</div>
+                <div>שלישי</div>
+                <div>רביעי</div>
+                <div>חמישי</div>
+                <div>שישי</div>
+                <div>שבת</div>
             </div>
             <div className='days'>
                 {this.state.Prevdays}

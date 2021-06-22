@@ -4,7 +4,6 @@ import Header from '../../parts/header/Header.js'
 import Footer from '../../parts/footer/Footer.js'
 import { PopupWidget } from "react-calendly";
 import './Products.css'
-import { ProductList } from './content/ProductList' //myJson
 import ProdCard from '../../general/prodCard/ProdCard'
 
 class Products extends React.Component {
@@ -36,7 +35,7 @@ class Products extends React.Component {
                     logoFlag = '1'
                     withMyPic = '0'
                     withLogo = '0'
-                    logoClass = 'headerProducts divProdBackImg row'
+                    logoClass = 'headerProducts divProdBackImg row text-center'
                     pgTitle = 'קטלוג המוצרים שלנו'
                     innerDivClass = 'prodLogoInner footInner1' /
                 >
@@ -48,7 +47,7 @@ class Products extends React.Component {
                 >
 
 
-                <div div class = "row mr-5" > 
+                <div div class = "row mr-5 content-center pr-2" > 
                     { products } 
                 </div>
 

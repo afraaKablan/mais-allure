@@ -72,6 +72,14 @@ let Content = async (treatment) => {
         "AppDates" : await GetAppointmentsDates(treatment)
     });
 };
+
+module.exports.Content = async (treatment) => {
+    return ({
+        "Appointments" : await GetAppointments(3, 'פנוי', treatment),
+        "AppDates" : await GetAppointmentsDates(treatment)
+    });
+};
+
 //Get appointments for specific user in specific treatment
 module.exports.GetAppointmetForUsers = (username,treatment) => {
     let DbQuery =   "SELECT UA.id ,user.username, prod.prodName, DATE_FORMAT(app.date,'%d/%m/%Y') AS date, app.time, sta.status"+

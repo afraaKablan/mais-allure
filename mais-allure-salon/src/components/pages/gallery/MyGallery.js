@@ -42,10 +42,10 @@ class MyGallery extends React.Component {
                             textColor = "#ffffff"
                             url = "https://calendly.com/afraa-kablan/echg" 
                 />
-                <div className = 'cont' >
+                <div className = 'cont mr-2' >
                     <Gallery images = {this.state.data.Images}
-                            margin = "15px"
-                            backdropClosesModal = "true" 
+                             margin = "15px"
+                             backdropClosesModal = "true" 
                     />
                 </div> 
             

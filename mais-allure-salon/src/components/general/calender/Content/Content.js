@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Content.css'
-import {Container, Row, Col } from 'react-bootstrap'
+// import {Container, Row, Col } from 'react-bootstrap'
 import SignIn from '../../../pages/signIn/SignIn'
 import { Modal, ModalHeader, ModalBody} from 'reactstrap';
 import { withCookies, Cookies } from 'react-cookie';

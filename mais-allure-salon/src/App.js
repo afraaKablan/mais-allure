@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ContactUs from './components/pages/contact_us/ContactUs'
 import './components/pages/contact_us/ContactUs.css'
 import AboutUs from './components/pages/aboutUs/AboutUs'
+import Service from './components/pages/serviceInfo/ServiceInfo'
 import './components/pages/aboutUs/AboutUs.css'
 import SignUp from './components/pages/signUp/SignUp'
 import './components/pages/signUp/SignUp.css'
@@ -52,9 +53,7 @@ class App extends React.Component {
 
   handleLogin (data){
     const { cookies } = this.props;
-    // let d = new Date();
-    // d = d.setMonth(d.getMonth()+1);
-    // console.log("dateeeeeee "+d)
+  
     cookies.set('username', data.user[0].username, { path: '/'  });
     cookies.set('password', data.user[0].password, { path: '/'  });
     cookies.set('Loggedinstatus','LOGGED_IN', { path: '/'  });
@@ -127,6 +126,7 @@ class App extends React.Component {
               />
               <Route path="/contactUs" component={ContactUs} exact />
               <Route path="/about" component={AboutUs} exact />
+              <Route path="/service" component={Service} exact />
               <Route path="/signUp" component={SignUp} exact />
               <Route 
                 path="/signIn" 
